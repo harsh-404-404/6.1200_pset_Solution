@@ -28,6 +28,66 @@
 
 \section*{Problem 1. Outlining Proofs}
 
+\textbf{(a),(b)}State Machine:
+1. The set of state is $Q = \{ \text{All possible permutations of } \{0,1,2,...,{n-1}\} \}$
 
+\textbf{Start state:} Any one of the permutations of $\{0,1,2,...,{n-1}\}$.
+
+\textbf{Transition:}
+\[ (a_0,\dots ,a_i,a_{i+1} \dots a_{j-1},a_j,a_{j+1},\dots,a_{n-1}) \rightarrow (a_0,\dots ,a_j,a_{j-1} \dots a_{i+1},a_i,a_{j+1},\dots,a_{n-1}) \]
+If $(i, j)$ is an inverted pair (i.e., $i < j$ but $a_i > a_j$).
+
+\textbf{Fianl state:}
+$q_f = (a_0,a_1, \dots ,a_{n-1})\text{ } |\text{ }(a_0 < a_1 < \dots < a_{n-1})$ which also implies that the list is sorted.
+
+
+\noindent\textbf{(c)} Derived variable: For any state
+$q = (a_0, a_1, \ldots, a_{n-1})$, define
+\[
+X(q) := a_0 \Vert a_1 \Vert \cdots \Vert a_{n-2} \Vert a_{n-1}.
+\]
+where $\Vert$ is concatenation operator.
+
+Also $X(q)$ has only nonnegative integer value beacause, each term of $X(q)$ is part of state q, By definition
+each member of every valid state is defined over natural numbers, so number obtained from concatenating natural numer must also be natural.
+
+We know that digits on more right are more significant then terms on right to them and during transition we swap terms $a_i$ and $a_j$
+where $i < j$ and $a_i > a_j$ so after swap value of left most term taking part in swap which is on positon $i$ will decrease resulting in overall value
+of the final concatenated value decreasing. Meaning value of $X(q)$ will strictly decrease by each transition.
+
+\vspace{\baselineskip}
+\noindent\textbf{(d)}:
+For derived variable $X(q)$ from part (c) we know that it's value is defined over natural numbere and $X(q)$ is strictly decreasing.
+
+Then by termination theorem we can conclude that state machine will terminate and from part(b) we know that final state will be fully
+sorted list.
+
+
+
+\section*{Problem 2. A Fibonacci Sum}
+
+\textbf{(a)}
+
+\[ S = \sum_{n = 1}^{\infty} \frac{F_n}{c^n}\]
+\begin{equation*}
+\begin{array}{r c l}
+  S &=& \frac{F_1}{c} + \frac{F_2}{c^2} + \frac{F_3}{c^3} + \frac{F_4}{c^4} \\[2ex]
+  \frac{S}{c} &=& \phantom{\frac{F_1}{c} +} \frac{F_1}{c^2} + \frac{F_2}{c^3} + \frac{F_3}{c^4} \\[2ex]
+\hline \\[-2ex] 
+  S - \frac{S}{c} &=& \frac{F_1}{c} + \frac{F_2 - F_1}{c^2} + \frac{F_3 - F_2}{c^3} + \dots \\[2ex]
+  S - \frac{S}{c} &=& \frac{F_1}{c} + \frac{F_0}{c^2} + \frac{F_1}{c^3} + \frac{F_2}{c^4} + \dots \rlap{\qquad $[\because F(n) - F(n-1) = F(n-2)]$} \\[2ex]
+  S - \frac{S}{c} &=& \frac{F_1}{c} + \frac{F_0}{c^2} + \frac{1}{c^2} \left[ \frac{F_1}{c} + \frac{F_2}{c^2} + \frac{F_3}{c^3} + \dots \right] \\[2ex]
+  S - \frac{S}{c} &=& \frac{1}{c} + \frac{S}{c^2} \rlap{\qquad $[\because F_1 = 1, F_0 = 0]$} \\[2ex]
+  \multicolumn{3}{c}{\boxed{S = \frac{c}{c^2 - c - 1}}}
+\end{array}
+\end{equation*}
+
+\textbf{(b)}
+By calculating the first 50 digits i got,
+\[0.00001000010000200003000050000800013000210003400055\]
+Which suprisigly shows magically shows Fibonacci series terms in order every 5 digits.
+
+
+\section*{Problem 3. Integral Method }
 
 \end{document}
