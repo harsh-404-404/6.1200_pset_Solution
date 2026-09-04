@@ -1,0 +1,204 @@
+\documentclass{article}
+
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[t]{0.68\textwidth}
+    {\large 6.1200 \textit{Mathematics for Computer Science}}\\[4pt]
+    {\large Problem Set 2}\\[4pt]
+    {\large Solutions by Harsh Bhalala}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.27\textwidth}
+    \raggedleft
+    {\large 29, August 2026}
+\end{minipage}
+
+\vspace{6pt}
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section*{Problem 1. Outlining Proofs}
+\noindent\textbf{(a)} \textbf{Theorem:} “Every natural number is tall or wide, but not both.”
+
+\begin{proof}[Proof by cases.]
+Suppose $n$ is any natural number. We must show that it cannot be tall and wide at the same time.
+To show n must be either tall or wide assume n is not tall [TODO: prove that n is wide].
+now all that remain is to show that n cannot be both tall and wide by caces.
+
+\textbf{Case I:} $n$ is tall. 
+[TODO: show that $n$ cannot be wide.]
+
+\textbf{Case II:} $n$ is wide.
+[TODO: show that $n$ cannot be tall.]
+
+Thus, by cases, we have shown that the theorem holds for every natural numbers.
+\end{proof}
+
+\noindent\textbf{(b)} \textbf{Theorem:} “There exists a happy natural number between 10 and 1000 that has no happy proper divisors.”
+
+\begin{proof}[Proof by example.]
+Theorem holds for n = 25,
+
+Show that 25 is happy natural number between 10 and 1000 because [TODO].
+    
+Also prove that 25 has no happy proper divisors [TODO].
+
+\end{proof}
+
+\noindent\textbf{(c)} \textbf{Theorem:} “There are no devious natural numbers.”
+
+\[P(n) \coloneqq \text{$n$ is not devious}\]
+
+\begin{proof}[Proof by induction.]
+    
+    \textbf{Induction hypothesis.}$P(n)$ holds for every $n \in \mathbb{N}$
+
+    \textbf{Base Cases.}
+    
+    \begin{itemize}[leftmargin=\parindent]
+        \item $P(0)$ holds because [TODO].
+        \item $P(1)$ holds because [TODO].
+    \end{itemize}
+    
+    \textbf{Inductive step:} Assume $P(n-1)$ holds for some arbitrary $n \in \mathbb{N}$,
+    now to prove that $p(n)$ also holds because 
+    
+    [TODO].
+
+    By induction principle, for every natural number P(n) holds.
+\end{proof}
+
+\section*{Problem 2. Spotting Errors}
+
+\noindent\textbf{(a)} Brynmor makes mistake while Plugging equations into equality. he fotgot to flip the inequalitie when multiplying by $-8$,
+the correct resultant equation would be $6x_i + 8x_{i-1} \geq 6 \cdot 2^{i-1} + 8 \cdot 2^{i-1}$ which is not sufficient to 
+prove the inductive step.
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)} In given proof during inductive steps Erik stated that $x_i > 0$ which was yet to be proven.
+
+\vspace{\baselineskip}
+\noindent\textbf{(c)} Zach's inductive step fails on $i = 1$ because queation used in inductive step $x_{i+1} = 6x_i - 8x_{i-1}$ would 
+would requre assumption that $S(0 )$ to use value $x_8$ which is not defined.
+
+\pagebreak
+
+\vspace{\baselineskip}
+\noindent\textbf{(d)}
+
+
+\begin{proof}
+    We will use induction on stronger hypothesis $R(i) := \text{``} x_i \geq 3x{i-1}\text{''}$ AND $x_i > 0$ ,proving that 
+    $R(i)$ holds for $n \geq 2$.
+    \newline\emph{Base Case:} $R(2) = 13 > 12$, and $13 > 0$, base case holds.
+    \newline\emph{Inductive step:} Suppose for $n \geq 2$ R(i) holds and let's show that R(i+1) holds.
+    Consider $x_{x+1} = 6x_i - 8x_{i-1}$ also from induction we know that $x_i \geq 3x_{i-1}$, So $ \frac{8}{3}x \geq 8x_{i-1}$ ,now plug that into 
+    $x_{i+1} = 6x_i - 8x_{i-1} = \frac{10}{3}x_i + \frac{8}{3}x_i - 8x_{i-1}$ and you get $x_{i+1} \geq \frac{10}{3}x_i$. also $x_i > 0$ which means $\frac{10}{3}x_i > 3x_i$, $x_{i+1} \geq 3x_i$ and here $x_i > 0$ so, $x_{i+1} > 0$.
+    That completes the Inductive step,so $R(i)$ is true for all $i \geq 2$.
+    
+    \noindent$R(i)$ is true for $i \geq 2$ and $x_1 = 4$,so for all $i \geq 1$, $x_i > 0$ as desire.
+\end{proof}
+
+\section*{Problem 3. Integer Multiplication from Bit Shifts}
+
+\noindent\textbf{(a)} start state to final state:
+\begin{align*}
+    Q_1(5,22,0) &\longrightarrow Q_2(10,11,0) \longrightarrow Q_3(20,5,10) \longrightarrow Q_4(40,2,30) \longrightarrow Q_5(80,1,30) \longrightarrow Q_f(160,0,110)
+\end{align*}
+
+in final state $a_f = 110$ as desired, hence state machine computes $5 \cdot 22$ correctly.
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)} Theorem:- $P(r, s, a) := \text{``}rs + a= xy\text{''}$ is invariant.
+\begin{proof}[Proof by invariant principle]:
+    For start state $Q_0$ where r = x,s = y,a = 0 $P(x,y,0)$ holds.
+    Now to prove $P$ is preserved we assume $P(r,s,a)$ holds (i.e: $rs + a = xy$) and that $(r,s,a) \rightarrow (r_t,s_t,a_t)$.We must prove that $P((r_t,s_t,a_t))$ 
+    holds, that is,
+    \[r_ts_t + a_t = xy\]
+    we also  prove by cases on transition from $(r,s,a) \rightarrow (r_t,s_t,a_t)$:
+    \begin{itemize}
+        \item\textbf{Case s is even:} 
+            \[(r_t,s_t,a_t) = (2r,s/2,a)\]
+            \[2r*s/2 + a = rs + a = xy\]
+            which is true by our assumption,so $P((r_t,s_t,a_t))$ holds.
+        \item\textbf{Case s is odd:}
+            \[(r_t,s_t,a_t) = (2r,(s-1)/2,a+r)\] 
+            \[2r*(s-1)/2 + a + r = rs + a = xy\]
+            is true rue by our assumption, so $P((r_t,s_t,a_t))$ holds.
+    \end{itemize}
+    That covers all the transitions and $P$ is preserved, so by invariant principle $P(r,s,a)$ is invariant.
+    
+    \vspace{\baselineskip}
+    \noindent\textbf{(c)} state $(r_f,s_f,a_f)$ is final when $s_f = 0$ 
+    
+    \vspace{\baselineskip}
+    \noindent\textbf{(d)} From part (b) for the final state $P((r_f,s_f,a_f)) = r_f  s_f + a_f = xy$, also using (c) in the expression, we conclude that in any reachable final state $a_f = xy$. 
+
+    \vspace{\baselineskip}
+    \noindent\textbf{(e)} $bitcount(s) = \lceil \log_2(s+1)  \rceil$  is derived variable so that $s \in q = (r,s,a)$ where $q \in Q$.
+
+    Now for some arbitrary transition $q \rightarrow q'$, by definition of transition,
+    value of $s$ is at least getting halved and so $s_{new}$ is at most $s/2$ and we also that know halving the value
+    of a positive integer would lead to its bit count being reduced by 1, meaning $bitcount(s) > bitcount(s_{new})$
+
+    By the given facts, we can conclude that $bitcount(s)$ is strictly decreasing and its output is strictly closed over natural numbers.
+    
+    This implies that the algorithm will eventually terminate because $bitcout(s)$ is strictly decreasing by each transition and it has a non-negative lower bound, so it must terminate.
+
+    \vspace{\baselineskip}
+    \noindent\textbf{(f)} According to Termination Theorem, since $bitcount(s)$ is strictly decreasig derived variable definied over
+    set of natual numbers (By Part(e)) it will end in at most $\lceil \log_2(y + 1) \rceil $steps when starting state is $(x,y,0)$.
+\end{proof}
+
+\setcounter{section}{4}
+\section*{Problem 4. Invariant Enlightenment}
+
+\textbf{Definition:} For our proof, perimeter is the total number of edges between enlightened and unenlightened students.  
+
+\begin{lemma}
+    $P(n)$:= With $k$ initially enlightened students, after n days the perimeter will be at most $4k$.
+\end{lemma}
+
+\begin{proof}[Proof by induction]:
+    
+    \textbf{Base Case $P(0)$:} On day 0, if the $k$ enlightened students are seated far apart, their perimeter will be at most $4k$, 
+     base case holds.
+    
+    \textbf{Inductive step:} Assume $P(n)$ is true and now want to show that $P(n+1)$ is also true. 
+    On day $n+1$, new students can become enlightened if 2 or more students adjacent to them are enlightened, so when a new student is enlightened, we observe Net change in perimeter by cases on the number of adjacent students.
+    \begin{itemize}
+        \item \textbf{Case I (2 adjacent):} increase and decrease by 2. 
+        \item \textbf{Case II (3 adjacent):} decrease 3 and increase by 1.
+        \item \textbf{Case III (4 adjacent):} only decrease by 4.
+    \end{itemize}
+
+    All cases by which the perimeter may change are exhausted, and in all of the cases we showed that the total perimeter will stay $4k$ 
+    at most, implying $P(n+1)$ and By induction hypothesis $P(n)$.
+\end{proof}
+
+\begin{theorem}
+If fewer than $n$ students among those in an $n \times n$ arrangment are initially enlightened, and 
+additional students reach enlightenment only by being taught by two or more neighbors, then there will be
+at least one student who never reaches enlightenment.
+\end{theorem}
+
+\begin{proof}
+    Let's say that k students were initially enlightened in some $n \times n$ grid, by the end of all possible
+    transitions, every student in the grid is enlightened. From Lemma 4.1, we know that the perimeter of such a state can 
+    be $4k$ at most, we also know that perimeter of $n \times n$ grid is $4n$.
+    \[4k \geq 4n \implies k \geq n\]
+
+    Which means that to completely enlightened grid of $n \times n$ students initially we need at least $n$ students. Which proves the theorem.
+
+\end{proof}
+
+\end{document}

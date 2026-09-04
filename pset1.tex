@@ -1,0 +1,169 @@
+\documentclass{article}
+
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[t]{0.68\textwidth}
+    {\large 6.1200 \textit{Mathematics for Computer Science}}\\[4pt]
+    {\large Problem Set 2}\\[4pt]
+    {\large Solutions by Harsh Bhalala}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.27\textwidth}
+    \raggedleft
+    {\large 29, August 2026}
+\end{minipage}
+
+\vspace{6pt}
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\vspace{12pt}
+
+\section*{Problem 2. Set Formulas and Propositional Formulas}
+
+\textbf{(a)} Use a truth table to verify that the propositional formula $(P \land \overline{Q}) \lor  (P \land Q)$ is equivalent to $P$.
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c}
+$P$ & $Q$ & $\overline{Q}$ & $P \land Q$ & $P \land \overline{Q} $ & ($P \land Q$) $\lor$ ($P \land \overline{Q} $)\\ 
+\hline
+T & T & F & T & F & T\\
+F & T & F & F & F & F\\
+T & F & T & F & T & T\\
+F & F & T & F & F & F\\
+\end{tabular}
+\end{center}
+As shown, the first column $P$ and the last column ($P \land Q$) $\lor$ $(P \land \overline{Q})$ are exactly the same. Therefore, they are equivalent.
+
+~\\
+\textbf{(b)} Prove that $A = (A - B) \cup (A \cap B)$ for all sets $A, B$, by showing $x \in A$ IFF $x \in ((A - B) \cup (A \cap B))$.
+
+\begin{proof}
+We will prove this by showing both directions of the implication.
+
+\textbf{Forward implication $(\implies)$:} We want to show: 
+$$x \in A \implies x \in ((A - B) \cup (A \cap B))$$
+
+Assume $x \in A$. We consider two possible cases for $B$:
+\begin{itemize}
+    \item \textbf{Case 1: $x \notin B$.} Since $x \in A$, by the definition of set difference, $x \in (A - B)$. By the definition of union, if an element is in a set, it must also be in the union of that set with any other set. Therefore, $x \in ((A - B) \cup (A \cap B))$.
+    \item \textbf{Case 2: $x \in B$.} Since $x \in A$ and $x \in B$, by the definition of intersection, $x \in (A \cap B)$. By the definition of union, it follows that $x \in ((A - B) \cup (A \cap B))$.
+\end{itemize}
+
+In both cases, the implication holds.
+
+
+
+\noindent\textbf{Backward implication $(\impliedby)$:} We want to show: 
+$$x \in ((A - B) \cup (A \cap B)) \implies x \in A$$
+
+By the definition of union, we can say $x \in (A - B)$ or $x \in (A \cap B)$.
+
+\begin{itemize}
+    \item \textbf{Case I: $x \in (A - B)$.} By the definition of set difference, if an element exists in the set difference $(A - B)$, then that element must be part of the first set ($A$). Thus, $x \in A$.
+    \item \textbf{Case II: $x \in (A \cap B)$.} By the definition of set intersection, $x \in A$ and $x \in B$. This immediately implies $x \in A$.
+\end{itemize}
+
+Since $x \in A$ holds in both cases, this implication also holds.
+\\
+Both the backward and forward implications are true. Subsequently, we have proven that $x \in A$ IFF $x \in ((A - B) \cup (A \cap B))$.
+\end{proof}
+
+\textbf{Relation to part (a):}
+~\\
+It is clear that part (a) and part (b) mirror each other. Part (b) is the set theory equivalent of the propositional logic in part (a).
+
+If we directly compare them:
+\begin{itemize}
+    \item $(A - B)$ is the equivalent of $(P \land \overline{Q})$.
+    \item $(A \cap B)$ is the equivalent of $(P \land Q)$.
+    \item $\cup$ (union) is the equivalent of $\lor$ (OR).
+\end{itemize}
+
+\pagebreak
+
+\section*{Problem 3. Predicate Practice}
+
+
+\textbf{(a)} The predicate sixish(n) defined as “n is a natural number whose first digit is 6.”
+$$\text{sixish}(n) \coloneqq \exists k.(6 \times 10^k \leq n < 7 \times 10^k)$$
+
+\noindent\textbf{(b)} “There are exactly two natural numbers n such that $Q(n)$ is true.”
+$$ \exists a,b.(a \neq b \land Q(a) \land Q(b) \land \forall c \implies (a = c \lor b = c)) $$
+
+\noindent\textbf{(c)} Goldbach’s Conjecture: “every even integer greater than 2 can be written as the
+sum of two primes.”
+$$ \forall n( n > 2 \land \text{isEven}(n) \implies \exists p,q (\text{isPrime}(p) \land \text{isPrime}(q) \land n = p + q))$$
+
+\noindent\textbf{(d)}  “Every prime larger than 100 is sixish.”
+$$ \forall n (n > 100 \land \text{isPrime}(n) \implies \text{sixish}(n))$$
+
+\noindent\textbf{(e)} No,R($n$) is not equivalent to isOdd$(n)$ in domain of $\mathbb{N}$  
+\begin{proof}[proof by counterexample] Try n = 3:
+isOdd$(3)$ is true since $3 = 2(1) + 1$
+
+but in case of R($n$), $3 = 2b + 5 \implies b = -1$ which is not possible since $b \in \mathbb{N}$
+Thus proving isOdd($n$) and R($n$) are not equivalent
+\end{proof}
+
+\section*{Problem 4. Induction and Contradiction}
+
+\textbf{(a)}
+
+$P(n)$ $\coloneqq$ for every integer $ n \geq 1 $ and any $n$ numbers $x_1,x_2,\dots,x_n \in \mathbb{R}, Q(x_1 \cdot x_2 \cdot ... \cdot x_n)
+ \implies Q(x_1) \lor Q(x_2) \lor ...  \lor Q(x_n)$ 
+
+\textbf{Given:} For all $x,y \in \mathbb{R}$,
+\[
+Q(x \cdot y) \implies \bigl(Q(x) \lor Q(y)\bigr). \tag{1}
+\]  
+This property will be used during Inductive step.
+
+\begin{proof}[proof by Induction]:We prove $P(n)$ by doing induction on $n$.
+
+    Base case $(n = 1)$: There is only one value so, $Q(x_1) \implies Q(x_1)$ is always true. 
+    
+    Inductive step: Assume $P(n)$ is true for an arbitrary $n \in \mathbb{N} (n \geq 1)$, now we want to prove $P(n + 1)$ i.e
+    \[Q(x_1x_2...x_nx_{n+1}) \implies \bigvee_{i=1}^{n+1}Q(x_i)\]   
+    Where $x_{n+1}. \in \mathbb{R}$. Let $y = (x_1 x_2...x_n)$, then 
+    \[Q(y \cdot x_{n+1}) \implies Q(y) \lor Q(x_{n+1})\]
+    Now from given property (1) we can say that implication holds and from induction hypothesis we know $Q(y) \implies \bigvee_{i=1}^{n}Q(x_i) $
+    and by substituting it we get, 
+    \[Q(y \cdot x_{n+1}) \implies \left( \bigvee_{i=1}^{n}Q(x_i) \right) \lor Q(x_{n+1})\]
+    also by expanding the value of y and simplifying the RHS of implication,
+    \[Q(x_1x_2...x_nx_{n+1}) \implies \bigvee_{i=1}^{n+1}Q(x_i)\]   
+
+    Which is equivalent to $P(n+1)$, so $P(n+1)$ must be true, and by principle of mathematical induction we conclude that $P(n)$ is true for every $n \geq 1$.
+\end{proof}
+
+\pagebreak
+
+\textbf{(b),(c)}
+The definition of $Q(x)$ that we should use is:
+\[Q(x) \colondash \nexists p,q \in \mathbb{Z},q \neq 0 : x = \frac{p}{q} \]
+\[\text{OR}\]
+\[Q(x) \colondash x \text{ is irrational.}\]
+
+\textbf{Lamma 1:} If product of two real number is irrational then atleast one of the two numbers must be irrational.
+
+\begin{proof}[proof by contradiction:] 
+
+Assume $\exists{x,y} \in \mathbb{R}$  $Q(x \cdot y)$ is true and x and y both are rational. but that immediately 
+creates a contradiction because as we know product of two rationl is always rational which contradicts our 
+assumption.
+
+\end{proof}
+
+
+\textbf{Theorem 1.} If the product of $n \geq 1$ real numbers is irrational, then at least one of those numbers must be irrational.
+\begin{proof}
+From lamma 1 we have already proven that $Q(x \cdot y) \implies Q(x) \lor Q(y)$ and by following the proof in 
+(a) we can conclude that if the product of $n \geq 1$ real numbers is irrational, then at least one of those 
+number must be irrational. 
+\end{proof}
+
+\end{document}
