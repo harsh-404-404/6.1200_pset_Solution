@@ -4,8 +4,12 @@
 # Do not ignore directories (needed so Git can look inside them)
 !*/
 
-# Do not ignore .pdf files
-!*.pdf
-
 # Do not ignore .tex files
 !*.tex
+
+# Ignore all PDF files by default
+*.pdf
+
+# Do not ignore PDFs matching the 'pset[0-9]' pattern (e.g., pset1.pdf, pset12.pdf)
+!pset[0-9].pdf
+!pset[0-9][0-9].pdf
