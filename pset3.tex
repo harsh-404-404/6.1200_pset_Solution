@@ -115,22 +115,32 @@ Now we know from part (b) that $S_3$ is a non-increasing function, so by applyti
 \]
 
 Now, for $f(x)$, which is non-increasin for $x > 2,5$ from the Integral bound theorem we know that 
-\[ S_3 \in [\frac{11}{128},\frac{47}{512}]\]
+\[ S_3 \in \left[\frac{11}{128},\frac{47}{512} \right] \]
 
-also we can calculate that $S_0 = f(0) + f(1) + f(2) + S_3 \in [\frac{114271}{1185408},\frac{484867}{4741632}]$
+also we can calculate that $S_0 = f(0) + f(1) + f(2) + S_3 \in \left[ \frac{114271}{1185408},\frac{484867}{4741632} \right]$
 
-accuracy archived by my approximation is $\frac{114271}{1185408} - \frac{484867}{4741632} = \frac{3}{512} $.
+accuracy archived by my approximation is $ \left[ \frac{114271}{1185408} - \frac{484867}{4741632} \right] = \frac{3}{512} $.
 
 \vspace{\baselineskip}
 \noindent\textbf{(d)} 
 Take $j = 5$, and then by repeating the calculation from part (c) but taking $i = 5$ instead of $3$, we get,
 
-\[S_5 \in [0,\frac{1}{200}]\]
+\[S_5 \in [\frac{3}{40},\frac{2}{25}]\]
+
+Now value of $S_0$:
+\[
+\begin{aligned}
+  S_0 &= f(0)+f(1)+f(3)+f(4)+S_5 \\
+      &= 0 + \frac{1}{216} + \frac{2}{343} + \frac{3}{512} + \frac{4}{729} + S_5 \\
+\end{aligned}
+\]
+Now to find $u$ and $v$ as rational numbers such that $u \leq S_0 \leq v$.
+
+\[u = \frac{1}{216} + \frac{2}{343} + \frac{3}{512} + \frac{4}{729} + \frac{3}{40}\]
+\[v = \frac{1}{216} + \frac{2}{343} + \frac{3}{512} + \frac{4}{729} + \frac{16}{200}\]
 
 and in $S_0 = f(0)+f(1)+f(3)+f(4)+S_5$ we only approximated term $S_5$, so error in $S_5$ is same as error in value of $S_0$ which is
-$\frac{1}{200} - 0 \leq \frac{1}{200}$ as required.
-
-\pagebreak
+$\frac{2}{25} - \frac{3}{40} \leq \frac{1}{200}$ as required.
 
 \section*{Problem 4. Some Sums}
 
