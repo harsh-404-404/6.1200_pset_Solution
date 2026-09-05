@@ -19,7 +19,7 @@
 \hfill
 \begin{minipage}[t]{0.27\textwidth}
     \raggedleft
-    {\large 29, August 2026}
+    {\large 29 August 2026}
 \end{minipage}
 
 \vspace{6pt}
@@ -29,13 +29,13 @@
 \section*{Problem 1. Outlining Proofs}
 
 \textbf{(a),(b)}State Machine:
-1. The set of state is $Q = \{ \text{All possible permutations of } \{0,1,2,...,{n-1}\} \}$
+The set of state is $Q = \{ \text{All possible permutations of } \{0,1,2,...,{n-1}\} \}$
 
 \textbf{Start state:} Any one of the permutations of $\{0,1,2,...,{n-1}\}$.
 
 \textbf{Transition:}
 \[ (a_0,\dots ,a_i,a_{i+1} \dots a_{j-1},a_j,a_{j+1},\dots,a_{n-1}) \rightarrow (a_0,\dots ,a_j,a_{j-1} \dots a_{i+1},a_i,a_{j+1},\dots,a_{n-1}) \]
-If $(i, j)$ is an inverted pair (i.e., $i < j$ but $a_i > a_j$).
+IFF $(i, j)$ is an inverted pair (i.e., $i < j$ but $a_i > a_j$).
 
 \textbf{Fianl state:}
 $q_f = (a_0,a_1, \dots ,a_{n-1})\text{ } |\text{ }(a_0 < a_1 < \dots < a_{n-1})$ which also implies that the list is sorted.
@@ -46,21 +46,22 @@ $q = (a_0, a_1, \ldots, a_{n-1})$, define
 \[
 X(q) := a_0 \Vert a_1 \Vert \cdots \Vert a_{n-2} \Vert a_{n-1}.
 \]
-where $\Vert$ is concatenation operator.
+where $\Vert$ is the concatenation operator.
 
-Also $X(q)$ has only nonnegative integer value beacause, each term of $X(q)$ is part of state q, By definition
-each member of every valid state is defined over natural numbers, so number obtained from concatenating natural numer must also be natural.
+Also, $X(q)$ has only a nonnegative integer value because each term of $X(q)$ is part of state q, By definition
+each member of every valid state is defined over natural numbers, so the number obtained from concatenating natural numbers must also be natural.
 
-We know that digits on more right are more significant then terms on right to them and during transition we swap terms $a_i$ and $a_j$
-where $i < j$ and $a_i > a_j$ so after swap value of left most term taking part in swap which is on positon $i$ will decrease resulting in overall value
-of the final concatenated value decreasing. Meaning value of $X(q)$ will strictly decrease by each transition.
+We know that in any number, digits on the left are more significant than digits to the right of them, and during transition we swap terms $a_i$ and $a_j$
+where $i < j$ and $a_i > a_j$, so after the swap, the value of the leftmost term taking part in the swap, which is at position $i$, will decrease, resulting in the overall value
+of the final concatenated value decreasing. This means $X(q)$ strictly decreases with each transition.
 
 \vspace{\baselineskip}
 \noindent\textbf{(d)}:
-For derived variable $X(q)$ from part (c) we know that it's value is defined over natural numbere and $X(q)$ is strictly decreasing.
 
-Then by termination theorem we can conclude that state machine will terminate and from part(b) we know that final state will be fully
-sorted list.
+For the derived variable $X(q)$ , from part (c), we know that its value is defined over natural numbers and $X(q)$ is strictly decreasing.
+
+Then, by the  termination theorem, we can conclude that the  state machine will terminate, and
+from part(b) we know that the  final state will be a fully sorted list.
 
 
 
@@ -83,11 +84,77 @@ sorted list.
 \end{equation*}
 
 \textbf{(b)}
-By calculating the first 50 digits i got,
+By calculating the first 50 digits, I got,
 \[0.00001000010000200003000050000800013000210003400055\]
-Which suprisigly shows magically shows Fibonacci series terms in order every 5 digits.
+Which magically has Fibonacci series represented by every 5 digits after decimal.
 
 
 \section*{Problem 3. Integral Method }
+
+\textbf{(a)} Integral method requires function to be monotonically non-decreasing or non-increasing over the given range but $f(x)$ is violating that rule,f
+by checking it's first derivateive $f'(x) = \frac{5 -2x}{(5+x)^4}$, It indicates that function is non-decreasing until $x=2.5$ than it becomes non-increasing.
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)(c)}
+Smallest i to approcimate $S_i$ can be found with first derivateive of $f'(x)$ which is 
+\[f'(x) = \frac{5 -2x}{(5+x)^4}\]
+By putting $f'(x) = 0$, we get $x = 2.5,$ and because $f'(2.5) > 0$, the function is increasing in the interval $[2.5,\infty)$. Meaning i = 3 is the minimum index that can be used to
+approximate the sum of $S_i$ by the integral method.
+
+\[S_0 = \sum_{x=0}^{2} f(x) + \sum_{x=3}^{\infty} f(x)\]
+\[S_0 = f(0) + f(1) + f(2) + S_3\]
+
+Now we know from part (b) that $S_3$ is a non-increasing function, so by applyting the integral method to find upper and lower bounds for $S_3$.
+\[
+\begin{aligned}
+  S_3 &= \sum_{x = 3}^{\infty} f(x) \\
+  I &= \int_{3}^{n} \frac{x}{(5+x)^3} \\
+    &= \lim_{n \rightarrow \infty} \left[ \frac{5}{2(5+x)^2} - \frac{1}{(5+x)} \right]_3^n \\
+    &= \frac{11}{128}
+\end{aligned}
+\]
+
+Now, for $f(x)$, which is non-increasin for $x > 2,5$ from the Integral bound theorem we know that 
+\[ S_3 \in [\frac{11}{128},\frac{47}{512}]\]
+
+also we can calculate that $S_0 = f(0) + f(1) + f(2) + S_3 \in [\frac{114271}{1185408},\frac{484867}{4741632}]$
+
+accuracy archived by my approximation is $\frac{114271}{1185408} - \frac{484867}{4741632} = \frac{3}{512} $.
+
+\vspace{\baselineskip}
+\noindent\textbf{(d)} 
+Take $j = 5$, and then by repeating the calculation from part (c) but taking $i = 5$ instead of $3$, we get,
+
+\[S_5 \in [0,\frac{1}{200}]\]
+
+and in $S_0 = f(0)+f(1)+f(3)+f(4)+S_5$ we only approximated term $S_5$, so error in $S_5$ is same as error in value of $S_0$ which is
+$\frac{1}{200} - 0 \leq \frac{1}{200}$ as required.
+
+\pagebreak
+
+\section*{Problem 4. Some Sums}
+
+\textbf{(a)}
+\[
+\begin{aligned} 
+\sum_{i = 0}^{n}\frac{5^i - 7^i}{13^i} 
+&= \sum_{i = 0}^{n} \left(\frac{5}{13}\right)^i - \sum_{i = 0}^{n} \left(\frac{7}{13}\right)^i \\ 
+&= \frac{1 - \left(\frac{5}{13}\right)^{n+1}}{1 - \frac{5}{13}} - \frac{1 - \left(\frac{7}{13}\right)^{n+1}}{1 - \frac{7}{13}} \qquad \left( \text{using } \sum_{i=0}^{n} r^i = \frac{1-r^{n+1}}{1-r} \right) \\
+&= \frac{13}{8} \left[ 1 - \left(\frac{5}{13}\right)^{n+1} \right] - \frac{13}{6} \left[ 1 - \left(\frac{7}{13}\right)^{n+1} \right] \\
+&= -\frac{13}{24} - \frac{13}{8}\left(\frac{5}{13}\right)^{n+1} + \frac{13}{6}\left(\frac{7}{13}\right)^{n+1} 
+\end{aligned}
+\]
+
+\vspace{\baselineskip}
+\textbf{(b)}
+\[
+\begin{aligned}
+\sum_{i=1}^{n} \sum_{j=1}^{k} (3^j - i) 
+&= \sum_{i=1}^{n} \sum_{j=1}^{k} 3^j - \sum_{i=1}^{n} \sum_{j=1}^{k} i \\
+&= n \sum_{j=1}^{k} 3^j - k \sum_{i=1}^{n} i \qquad \text{(evaluating the outer and inner constant sums)} \\
+&= n \left( \frac{3(3^k - 1)}{3 - 1} \right) - k \left( \frac{n(n+1)}{2} \right) \qquad \text{(applying GP and AP series formulas)} \\
+&= \frac{3n(3^k - 1)}{2} - \frac{kn(n+1)}{2}
+\end{aligned}
+\]
 
 \end{document}
