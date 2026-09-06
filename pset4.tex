@@ -1,0 +1,114 @@
+\documentclass{article}
+
+\usepackage{amssymb,amsmath,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+\noindent
+\begin{minipage}[t]{0.68\textwidth}
+    {\large 6.1200 \textit{Mathematics for Computer Science}}\\[4pt]
+    {\large Problem Set 2}\\[4pt]
+    {\large Solutions by Harsh Bhalala}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.27\textwidth}
+    \raggedleft
+    {\large 29 August 2026}
+\end{minipage}
+
+\vspace{6pt}
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section*{Problem 1. Asymptotic Relationships}
+
+\textbf{(a)}
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+        \hline
+        $f(n)$ & $g(n)$ & Relationship? \\
+        \hline \hline
+        $6^n$ & $n^{1200}$ &  $f \in \omega (g)$\\
+        \hline
+        $(\log n)^6$ & $\sqrt[1200]{n}$ & $f \in o(g)$\\
+        \hline
+        $\log_6 (n^{1200})$ & $(\log_{1200} n)^6$ & $f \in o(g)$ \\
+        \hline
+        $\log (n!)$ & $n \log n$ & $f \in \Theta(g)$ \\
+        \hline
+        $2^{\lceil \log_2 n \rceil}$ & $3^{\lceil \log_3 n \rceil}$ & $f \in o(g)$ \\
+        \hline
+        $2^{\lceil \log_2 n \rceil} - n + 1$ & $3^{\lceil \log_3 n \rceil} - n + 1$ & $f \in o(g)$ \\
+        \hline
+        $n$ & $n^{\cos \log n}$ & None. \\
+        \hline
+        \end{tabular}
+    \end{center}
+
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+        \hline
+        $f(n)$ & $g(n)$ & Relationship? & Justification\\
+        \hline \hline
+        $2^{(\log n)^2}$ & $2^{(\lceil \log n \rceil)^2}$ &  None. & $\lim_{x \rightarrow \infty} \frac{f(n)}{g(n)}$ does not exist \\
+        \hline
+        $4^n$ & $(2n)!/(n!)^2$ & $f \in \omega (g)$ & $\lim_{x \rightarrow \infty} \frac{f(n)}{g(n)} = \infty$\\
+        \hline
+        \end{tabular}
+    \end{center}
+Note:For equation $\frac{2^{(\log n)^2}}{2^{(\lceil \log n \rceil)^2}}$ limit does not exist because at infity it's value oscillates between 0 and 1.
+
+
+\section*{Problem 2. OEIS}
+
+\textbf{(a)}
+\[x_3 = 5, x_4 = 12, x_5 = 29, x_6 = 70\]
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)(c)}
+Found formula:
+\[ a(n) = \frac{(1 + \sqrt{2})^n - (1 - \sqrt{2})^n}{2\sqrt{2}} \]
+
+
+\vspace{\baselineskip}
+\noindent\textbf{(d)}
+\begin{proof}[Proof by strong induction]
+    Induction hypothesis which says, sequence that begins with $x_0 = 0, x_1 = 1, x_2 = 2$ and continues
+with $x_n = 5x_{n-2} + 2x_{n-3}$ for $n \geq 3$, nth term can also be calculated via $P(n) = \frac{(1 + \sqrt{2})^n - (1 - \sqrt{2})^n}{2\sqrt{2}}$ for $x \geq 0$ 
+
+Base cases: $P(0) = 0$
+\[P(1) = \frac{(1 + \sqrt{2})^1 - (1 - \sqrt{2})^1}{2\sqrt{2}} = 1\] 
+\[P(2) = \frac{(1 + \sqrt{2})^2 - (1 - \sqrt{2})^2}{2\sqrt{2}} = 2\]  
+Inductive step:For strong induction assume $P(n-1)$,P(n-2) is true for $n \geq 2$ and want to show that $P(n+1)$ is also true.
+By the definition of given sequence we know that,
+\[
+\begin{aligned}
+    x_{n+1} &= 5x_{n-1} + 2x_{n-2} \\
+    &= 5\left( \frac{(1 + \sqrt{2})^{n-1} - (1 - \sqrt{2})^{n-1}}{2\sqrt{2}} \right) + 2\left( \frac{(1 + \sqrt{2})^{n-2} - (1 - \sqrt{2})^{n-2}}{2\sqrt{2}} \right)  \\
+    &=\frac{1}{2\sqrt{2}} \left[ \left( 5(1+\sqrt{2})^{n-1} + 2(1+\sqrt{2})^{n-2}\right) - \left( 5(1-\sqrt{2})^{n-1} + 2(1-\sqrt{2})^{n-2} \right) \right] \\
+    &=\frac{1}{2\sqrt{2}} \left[ (1+\sqrt{2})^{n-2}[7+5\sqrt{2}] - (1-\sqrt{2})^{n-2}[7-5\sqrt{2}] \right]\\ 
+    &=\frac{1}{2\sqrt{2}} \left[ (1+\sqrt{2})^{n-2}[1+3\sqrt{2}+3(\sqrt{2})^2+(\sqrt{2})^3] - (1-\sqrt{2})^{n-2}[1-3\sqrt{2}+3(\sqrt{2})^2-(\sqrt{2})^3] \right]\\
+    &=\frac{1}{2\sqrt{2}} \left[ (1+\sqrt{2})^{n-2}[1+\sqrt{2}]^3 - (1-\sqrt{2})^{n-2}[1-\sqrt{2}]^3 \right]\\
+    &=\frac{(1 + \sqrt{2})^{n+1} - (1 - \sqrt{2})^{n+1}}{2\sqrt{2}}\\
+\end{aligned}
+\]
+Which imples $P(n+1)$ and by strong induction hypothesis $P(n)$ holds for all $n \geq 0$.   
+\end{proof}
+
+\section*{Problem 3. Bounded Asymptotics}
+
+\textbf{(a)}
+\begin{proof}
+    Function $f$ is bounded from above therefore, $\exists B \in \mathbb{R} (B > 0)$
+\end{proof}
+
+\end{document}
+
