@@ -29,12 +29,12 @@
 
 \textbf{(a)}
 
-\begin{proof}[Proof by strong induction]  
+\begin{proof}[Proof by strong induction]
 Let $P(n) := F_{n + a} \equiv F_{n} \cdot F_{a+1} \pmod{F_a}$, now to prove $p(n)$ for $n \geq 0$ by strong induction.
 
 \textbf{Base Case:}\\
-\indent\indent    $P(0) = F_{a} \equiv F_0 \cdot F_{a+1} \equiv 0 \pmod{F_a} $.\\
-\indent\indent    $P(1) = F_{a+1} \equiv F_1 \cdot F_{a+1} \equiv 1 \cdot F_{a+1} \equiv F_{a+1} \pmod{F_a}$\\
+\indent\indent $P(0) = F_{a} \equiv F_0 \cdot F_{a+1} \equiv 0 \pmod{F_a} $.\\
+\indent\indent $P(1) = F_{a+1} \equiv F_1 \cdot F_{a+1} \equiv 1 \cdot F_{a+1} \equiv F_{a+1} \pmod{F_a}$\\
 Therefore, both cases hold.
 
 \textbf{Inductive step:} For strong induction on $n$ assume $P(n-1)$ and $P(n-2)$ holds for $n \geq 2$. So,
@@ -44,22 +44,22 @@ F_{(n-1)+a} \equiv F_{n-1} \cdot F_{a+1} \pmod{F_a}
 \begin{equation}
 F_{(n-2)+a} \equiv F_{n-2} \cdot F_{a+1} \pmod{F_a}
 \end{equation}
-Now by property of the congruence on equation (1) and (2),
+Now, by the properties of the congruence on equation (1) and (2),
 \[
 \begin{aligned}
-    F_{(n-1)+a} + F_{(n-2)+a} &\equiv F_{n-1} \cdot F_{a+1}  + F_{n-2} \cdot F_{a+1} &\pmod{F_a}\\
-    F_{n+a} &\equiv \left(F_{n-1} + F_{n-2} \right) \cdot F_{a+1}  &\pmod{F_a}\\
-    F_{n+a} &\equiv F_n \cdot F_{a+1}  &\pmod{F_a}
+F_{(n-1)+a} + F_{(n-2)+a} &\equiv F_{n-1} \cdot F_{a+1} + F_{n-2} \cdot F_{a+1} &\pmod{F_a}\\
+F_{n+a} &\equiv \left(F_{n-1} + F_{n-2} \right) \cdot F_{a+1} &\pmod{F_a}\\
+F_{n+a} &\equiv F_n \cdot F_{a+1} &\pmod{F_a}
 \end{aligned}
 \]
-Which implies $P(n)$ is true. Therefore by strong induction hypothesis $P(n)$ is true for all $n \geq 0$.
+Which implies $P(n)$ is true. Therefore, by the strong induction hypothesis, $P(n)$ is true for all $n \geq 0$.
 \end{proof}
 
 
 \vspace{\baselineskip}
 \noindent\textbf{(b)}
 
-\begin{proof}[Proof by induction]  
+\begin{proof}[Proof by induction]
 Induction hypothesis Assume \(P(n)\) is true, i.e.,
 
 \[F_{na} \equiv 0 \pmod{F_a}.\]
@@ -77,121 +77,130 @@ F_{na+a} &\equiv 0\cdot F_{a+1} \pmod{F_a}. \\[6pt]
 F_{na+a} &\equiv 0 \pmod{F_a}.
 \end{aligned}
 \]
-Which proves $P(n+1)$ holds and by induction hypothesis $P(n)$ is true for $n \geq 0$.
+This proves $P(n+1)$ holds, and by the induction hypothesis $P(n)$ is true for $n \geq 0$.
 \end{proof}
-Now if $a \vert b$ then $\exists k \in \mathbb{N}$ such that $a * k = b$. Now by $P(k)$ , $F_{ak} = F_b \equiv 0 \pmod{F_a}$ which implies $F_a \vert F_b$.
+Now if $a \vert b$, then $\exists k \in \mathbb{N}$ such that $a * k = b$. Now by $P(k)$ , $F_{ak} = F_b \equiv 0 \pmod{F_a}$ which implies $F_a \vert F_b$.
 
 \section*{Problem 2. Computing Modular Inverses}
 
 \textbf{(a)}
-First using Euclid's algorithm: 
+First, using Euclid's algorithm:
 \[
 \begin{aligned}
-    gcd(43,15) &= gcd(15,13)    \qquad 13 = 42 - 2 \cdot 15\\
-               &= gcd(13,2)     \qquad 2 = 15 - 1 \cdot 13\\
-               &= gcd(2,1)      \qquad 1 = 13 - 6 \cdot 2\\
+gcd(43,15) &= gcd(15,13) \qquad 13 = 42 - 2 \cdot 15\\
+&= gcd(13,2) \qquad 2 = 15 - 1 \cdot 13\\
+&= gcd(2,1) \qquad 1 = 13 - 6 \cdot 2\\
 \end{aligned}
 \]
-now doing backwards substitution (Pulverizer):\\
+Now doing backwards substitution (Pulverizer):\\
 \textbf{Substitute 2 (from $2 = 15 - 1 \cdot 13$)}
 \[
 \begin{aligned}
-    1 = 13 - 6 \cdot (15 - 1 \cdot 13)\\
-    1 = 7 \cdot 13 - 6 \cdot 15\\
+1 = 13 - 6 \cdot (15 - 1 \cdot 13)\\
+1 = 7 \cdot 13 - 6 \cdot 15\\
 \end{aligned}
 \]
 \textbf{Substitute 13 (from $13 = 43 - 2 \cdot 15$)}
 \[
 \begin{aligned}
-    1 = 7 \cdot (43 - 2 \cdot 15) - 6 \cdot 15\\
-    1 = 7 \cdot 43 - 14 \cdot 15 - 6 \cdot 15\\
-    1 = 7 \cdot 43 - 20 \cdot 15\\
+1 = 7 \cdot (43 - 2 \cdot 15) - 6 \cdot 15\\
+1 = 7 \cdot 43 - 14 \cdot 15 - 6 \cdot 15\\
+1 = 7 \cdot 43 - 20 \cdot 15\\
 \end{aligned}
 \]
-The coefficient of 15 is -20 Therefore, the Inverses would be $43 - 20 = 23$. So $23 \cdot 15 \equiv 1 \pmod{43}$.
+The coefficient of 15 is -20. Therefore, the inverse would be $43 - 20 = 23$. So $23 \cdot 15 \equiv 1 \pmod{43}$.
 
 \vspace{\baselineskip}
 \noindent\textbf{(b)}
-From Fermat's Little theorem we know that $15^{42} \equiv 1 \pmod{43}$ and now multiplying both side with $15^{-1}$ 
-we get 
+From Fermat's Little theorem we know that $15^{42} \equiv 1 \pmod{43}$ and now multiplying both side with $15^{-1}$
+we get
 \[ 15^{41} \equiv 15^{-1} \pmod{43}\]
 Now to simplify $15^{41}$ we caclculate the smaller powers of 15:
 \[
 \begin{aligned}
-    15^1 \equiv 15 \pmod{43}\\
-    15^2 = 225 \equiv 10 \pmod{43}\\
-    15^4 \equiv 100 \equiv 14 \pmod{43}\\
-    15^8 \equiv 196 \equiv 24 \pmod{43}\\
-    15^{16} \equiv 576 \equiv 17 \pmod{43}\\
-    15^{32} \equiv 289 \equiv 31 \pmod{43}\\
+15^1 \equiv 15 \pmod{43}\\
+15^2 = 225 \equiv 10 \pmod{43}\\
+15^4 \equiv 100 \equiv 14 \pmod{43}\\
+15^8 \equiv 196 \equiv 24 \pmod{43}\\
+15^{16} \equiv 576 \equiv 17 \pmod{43}\\
+15^{32} \equiv 289 \equiv 31 \pmod{43}\\
 \end{aligned}
 \]
 Now $15^{41} = 15^{32} \cdot 15^{8} \cdot 15$ Therefore, $15^{-1} \equiv 31 \cdot 24 \cdot 15 \equiv 23 \pmod{43}$
-Meaning Inverses of $15 \text{ mod } 43$ is 23.
+Meaning the inverse of $15 \text{ mod } 43$ is 23.
 
 
 \section*{Problem 3. Primality Testing}
 
 \textbf{(a)}
 \begin{proof}[Proof by Contradiction]
-    Assume an integer $1 \leq a \leq n - 1$ is fermat's witness of some prime number $n$.
-    since $a$ is fermat's witness $a^{n-1} \not\equiv 1 \pmod{n}$. 
-    Also since $n$ is prime and $a$ is in range $[1,n-1]$, Therefore $a$ is not multiple of $n$ so  
-    by fermat's little theorem $a^{n-1} \equiv 1 \pmod{n}$ which is a contradiction.    
+Assume an integer $1 \leq a \leq n - 1$ is fermat's witness of some prime number $n$.
+since $a$ is fermat's witness $a^{n-1} \not\equiv 1 \pmod{n}$.
+Also since $n$ is prime and $a$ is in range $[1,n-1]$, Therefore $a$ is not multiple of $n$ so
+by fermat's little theorem $a^{n-1} \equiv 1 \pmod{n}$ which is a contradiction.
 \end{proof}
 
 \vspace{\baselineskip}
 \noindent\textbf{(b)}
 \begin{proof}
-    Assume $p$ is a prime and $x^2 \equiv_p 1$ by the defintion of congruence  $p \mid x^2 - 1$
-    \[p \mid (x - 1)(x + 1)\]
-    Since $p$ is prime (by Lemma 9.4.2) $p \mid (x - 1)$ and $p \mid (x + 1)$ so by defintion of congruence $x \equiv_n -1$ and $x \equiv_n 1$. 
+Assume $p$ is a prime and $x^2 \equiv_p 1$ by the defintion of congruence $p \mid x^2 - 1$
+\[p \mid (x - 1)(x + 1)\]
+Since $p$ is prime (by Lemma 9.4.2) $p \mid (x - 1)$ and $p \mid (x + 1)$ so by defintion of congruence $x \equiv_n -1$ and $x \equiv_n 1$.
 \end{proof}
 \pagebreak
 
 \noindent\textbf{(c)}
 \begin{proof}[Proof by contradiction]
-    Assume, for the sake of contradiction, that the algorithm returns 'composite' for some prime number $n$.
-    ,So at least one of the condition from the algorithm must hold.
-    \begin{itemize}
-        \item $x_e \not\equiv_n 1$
-        \item Consecutive terms $(x_i, x_{i+1})$ where $x_{i+1} \equiv_n 1$ but $x_i \not\equiv_n \pm 1$.
-    \end{itemize}
-    
-    Suppose the first condition holds then $x_e = a^{n-1} \not\equiv_n 1$.
-    Now Since $n$ is prime and $1 \leq a \leq n-1$ and
-    Fermat's Little Theorem implies that $a^{n-1} \equiv_n 1$, which is a contradiction.
-    
-    First condition led to contradiction, So second condition must be true. 
-    So $x_{i+1} = {x_i}^2 \equiv_n 1$ but $x_i \not\equiv_n \pm 1$.
-    Since n is prime, by lemme from part (b),given condition yields contradiction.    
-    
-    Both of the condition lead to contradiction meaning our assumption must be wrong so n must indeed be composite.
+Assume, for the sake of contradiction, that the algorithm returns 'composite' for some prime number $n$.
+,So at least one of the conditions from the algorithm must hold.
+\begin{itemize}
+\item $x_e \not\equiv_n 1$
+\item Consecutive terms $(x_i, x_{i+1})$ where $x_{i+1} \equiv_n 1$ but $x_i \not\equiv_n \pm 1$.
+\end{itemize}
+
+Suppose the first condition holds; then $x_e = a^{n-1} \not\equiv_n 1$.
+Now Since $n$ is prime and $1 \leq a \leq n-1$ and
+Fermat's Little Theorem implies that $a^{n-1} \equiv_n 1$, which is a contradiction.
+
+The first condition led to a contradiction, so the second condition must be true.
+So $x_{i+1} = {x_i}^2 \equiv_n 1$ but $x_i \not\equiv_n \pm 1$.
+Since n is prime, by lemme from part (b), the given condition yields a contradiction.
+
+Both conditions lead to a contradiction, meaning our assumption must be wrong, so n must indeed be composite.
 \end{proof}
 
 \section*{Problem 4. Pulverizer State Machine}
 \textbf{(a)}
 For some arbitrary state $(x, y, s, t, u, v)$ say Pres1, Pres2, Pres3 are true and we need to prove that Pres1, Pres2, Pres3 are true for the next state $(x', y', s', t', u', v')$.
 
-By the defintion of transition in given state machine we have $x' = y$, $y' = (x \text{ rem } y)$, $s' = u$, $t' = v$, $u' = s - qu$ and $v' = t - qv$ where $x = qy + (x \text{ rem } y)$.
+By the definition of transition in the given state machine, we have $x' = y$, $y' = (x \text{ rem } y)$, $s' = u$, $t' = v$, $u' = s - qu$, and $v' = t - qv$, where $x = qy + (x \text{ rem } y)$.
 \begin{itemize}
-    
-    \item \textbf{Pres1:} gcd($x', y'$) = gcd($a, b$) we know that gcd($x', y'$) = gcd($y, x \text{ rem } y$) = gcd($x, y$) = gcd($a, b$) which proves Pres1 is preserved.
-    
-    \item \textbf{Pres2:} $s'a + t'b = x'$, using the definition of $s', t', x'$ we have $s'a + t'b = ua + vb = y = x'$ which proves Pres2 is preserved.
-    
-    \item \textbf{Pres3:} $u'a + v'b = y'$, using the definition of $u', v', y'$ we have 
-    \[
-    \begin{aligned}
-        u'a + v'b &= (s - qu)a + (t - qv)b\\
-        &= (sa + tb) - q(ua + vb)\\ 
-        &= x - q(y) \\
-        &= (x \text{ rem } y)\\
-        &= y'\\
-    \end{aligned}
-    \]
-    which proves Pres3 is preserved.    
+
+\item \textbf{Pres1:} gcd($x', y'$) = gcd($a, b$) we know that gcd($x', y'$) = gcd($y, x \text{ rem } y$) = gcd($x, y$) = gcd($a, b$) which proves Pres1 is preserved.
+
+\item \textbf{Pres2:} $s'a + t'b = x'$, using the definition of $s', t', x'$ we have $s'a + t'b = ua + vb = y = x'$ which proves Pres2 is preserved.
+
+\item \textbf{Pres3:} $u'a + v'b = y'$, using the definition of $u', v', y'$ we have
+\[
+\begin{aligned}
+u'a + v'b &= (s - qu)a + (t - qv)b\\
+&= (sa + tb) - q(ua + vb)\\
+&= x - q(y) \\
+&= (x \text{ rem } y)\\
+&= y'\\
+\end{aligned}
+\]
+which proves Pres3 is preserved.
 \end{itemize}
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)} From part (a), we proved that Pres1 and Pres2 are preserved, and from the definition of the given state machine we know that
+In the final state, $y = 0$, so now substituting $y$ and Pres2 in Pres1, we get gcd($a, b$) = gcd($x, y$) = gcd(sa + tb, 0) = sa + tb.
+Therefore, $s$ and $t$ are the coefficients satisfying B\'ezout's identity.
+
+\vspace{\baselineskip}
+\noindent\textbf{(c)} Because the given state machine is just the Euclidean algorithm with some extra computation, and even the termination condition is
+same as the Euclidean algorithm, which is when y = 0.
 
 
 \end{document}
