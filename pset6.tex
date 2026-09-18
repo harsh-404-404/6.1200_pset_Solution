@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage{amssymb,amsmath,amsthm,mathtools,cancel}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+\noindent
+\begin{minipage}[t]{0.68\textwidth}
+{\large 6.1200 \textit{Mathematics for Computer Science}}\\[4pt]
+{\large Problem Set 2}\\[4pt]
+{\large Solutions by Harsh Bhalala}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.27\textwidth}
+\raggedleft
+{\large 18, September 2026}
+\end{minipage}
+
+\vspace{6pt}
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section*{Problem 1. Failed Induction}
+\textbf{(a)}
+    By taking n = 9, we get $3(9) - 6 = 21$ edges so we have 9 nodes and 21 edges.
+    Now, in our counterexample, two of the 9 nodes have degree 0, and the remaining 7 nodes with 21 edges make
+    a complete $K_7$ subgraph, which has $\chi(K_7) = 7$, thus proving the claim is false.
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)} Not solved due to lack of Recitation.
+
+\section*{Problem 2. High Chromatic Number Without Triangles}
+
+\textbf{(a)}
+    for G set of colors $c = $ \{red, blue, green, black\} and valid coloring function
+    \[
+    \begin{aligned}
+    f = \{ &(w,\text{black}), (v_0,\text{blue}), (v_1,\text{green}), (v_2,\text{blue}), (v_3,\text{green}), (v_4,\text{red}),\\
+    &(u_0,\text{blue}), (u_1,\text{red}), (u_2,\text{blue}), (u_3,\text{green}), (u_4,\text{red})
+    \}
+    \end{aligned}
+    \]
+Therefore, $\chi(G) \leq 4$.
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)} \textbf{Lemma:} For a simple cicular graph $C$ with odd number of nodes, $\chi(C) = 3$.
+\begin{proof}
+    We know that a graph can only be two colored if it is a bipartite also a bipartie does not contain any
+    odd-numbered cycle, meaning $C$ is not bipartite and cannot be 2-colored, but we can color nodes alternatively with
+    2 colors and the last node in an odd position with one extra color, thus proving $\chi(C) = 3$.
+\end{proof}
+
+For graph $G$, the subgraph containing the outer nodes $v = {u_0,\dots,u_4}$ is odd numberd cicular graph, and from the lemma
+we need at least 3 colors. Therefore, any valid coloring of $G$ must match the partial coloring shown.
+
+
+
+\vspace{\baselineskip}
+\noindent\textbf{(c)} By using part (b) and trying to color inner vertices $v'' = {v_0,\dots v_4}$, without loss of generality
+    if we choose any three vertices from v'', suppose $v_1,v_4, v_3$, we observe that to color all three of them we at least need 3 colors
+    and now to color the centeral vertex $w$ we must use 4th color, meaning $\chi(G) > 3$.
+    three vertices
+
+\section*{Problem 3. Find A Pet}
+
+\textbf{(a)}
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c||l|l|l|l|l|l|l|}
+\hline
+& Day 1 & Day 2 & Day 3 & Day 4 & Day 5 & Day 6 & Day 7 \\
+\hline
+\hline
+H & A, B, C, \fbox{D} & \fbox{D} & \fbox{D} & \fbox{D} & & & \\
+\hline
+I & $\emptyset$ & B, \fbox{C} & \fbox{C} & \fbox{C} & & & \\
+\hline
+S & $\emptyset$ & \fbox{A} & A, \fbox{B} & \fbox{B} & & & \\
+\hline
+Z & $\emptyset$ & $\emptyset$ & $\emptyset$ & \fbox{A} & & & \\
+\hline
+\end{tabular}
+\end{table}
+
+\pagebreak
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c||l|l|l|l|l|l|l|}
+\hline
+& Day 1 & Day 2 & Day 3 & Day 4 & Day 5 & Day 6 & Day 7 \\
+\hline
+\hline
+A & \fbox{I} & \fbox{I} & & & & & \\
+\hline
+B & $\emptyset$ & \fbox{Z} & & & & & \\
+\hline
+C & \fbox{S} & \fbox{S} & & & & & \\
+\hline
+D & \fbox{H}, Z & \fbox{H} & & & & & \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\vspace{\baselineskip}
+\noindent\textbf{(c)}
+    Since H prefers D over C and C prefers H the best, they will form a rough matching.
+
+\section*{Problem 4. Stable Merriment}
+
+\textbf{(a)}
+\begin{proof}
+    Let's say for some arbitrary set of stable matchings between $n$ Pokemon and $n$ Trainers
+    on the final day of the Stable Matching Algorithm, there are no merry Trainers. So at most each of the Trainers
+    reject $n - \lceil \frac{n}{2}\rceil - 1$ Pokemon
+    and since there are n Trainers
+    \[S \leq n\left( n - \lceil \frac{n}{2}\rceil - 1 \right) < \frac{n^2}{2} \tag*{By elementary algebra}\]
+\end{proof}
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+    Let's say there are no merry Pokemon or Trainers. Since there are no merry Pokemon
+    $S \geq n \lceil \frac{n}{2} \rceil \geq \frac{n^2}{2}$ but that would create a contradiction
+    with part (a) meaning if there are no merry trainers then there must be at least one merry Pokemon
+    and the opposite can be proved similarly
+
+    Therefore, we conclude that at least one Pokemon or Trainer must be merry.
+\end{document}
