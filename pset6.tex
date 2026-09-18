@@ -56,15 +56,22 @@ Therefore, $\chi(G) \leq 4$.
 \end{proof}
 
 For graph $G$, the subgraph containing the outer nodes $v = {u_0,\dots,u_4}$ is odd numberd cicular graph, and from the lemma
-we need at least 3 colors. Therefore, any valid coloring of $G$ must match the partial coloring shown.
-
+we need at least 3 colors; since a 5-cycle can use any single color at most twice, each color must be used in a 2-2-1 distribution.
+Therefore, any valid coloring of $G$ must match the partial coloring shown.
 
 
 \vspace{\baselineskip}
-\noindent\textbf{(c)} By using part (b) and trying to color inner vertices $v'' = {v_0,\dots v_4}$, without loss of generality
-    if we choose any three vertices from v'', suppose $v_1,v_4, v_3$, we observe that to color all three of them we at least need 3 colors
-    and now to color the centeral vertex $w$ we must use 4th color, meaning $\chi(G) > 3$.
-    three vertices
+\noindent\textbf{(c)} By using the coloring pattern of part (b) and now let us determine the forced 
+coloring for inner vertices $v_0,v_3,v_4$.
+    \begin{itemize}
+        \item $v_0$ is adjacent to $u_1$ (Pink) and $u_4$ (Green), so it must be colored Blue.
+        \item $v_3$ is adjacent to $u_2$ (Blue) and $u_4$ (Green), so it must be colored Pink.
+        \item $v_4$ is adjacent to $u_0$ (Blue) and $u_3$ (Pink), so it must be colored Green.
+    \end{itemize}
+We observe that to color all three of them, we at least need 3 colors
+and now to color the cetral vertex $w$ we must use 4th color, meaning $\chi(G) > 3$.
+
+\pagebreak
 
 \section*{Problem 3. Find A Pet}
 
@@ -88,7 +95,6 @@ Z & $\emptyset$ & $\emptyset$ & $\emptyset$ & \fbox{A} & & & \\
 \end{tabular}
 \end{table}
 
-\pagebreak
 \vspace{\baselineskip}
 \noindent\textbf{(b)}
 
@@ -114,7 +120,7 @@ D & \fbox{H}, Z & \fbox{H} & & & & & \\
 
 \vspace{\baselineskip}
 \noindent\textbf{(c)}
-    Since H prefers D over C and C prefers H the best, they will form a rough matching.
+    Since H prefers D over C and D prefers H the best, they will form a rough matching.
 
 \section*{Problem 4. Stable Merriment}
 
