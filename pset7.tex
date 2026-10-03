@@ -34,16 +34,15 @@ Let $P(n)$ be the proposition that any tree with $n \ge 2$ vertices and $k$ vert
 
 \textbf{Inductive step:} Assume $P(n-1)$ is true for $n > 2$.
 
-Consider a tree $T$ with $n > 2$ vertices, of which $k$ have degree at least 3. Let $T' = T - l$, where $l$ is a leaf of $T$. Consider cases based on the leaf count of $T'$.
+Consider a tree $T$ with $n > 2$ vertices, of which $k$ have degree at least 3. Let $T' = T - l$, where $l$ is a leaf of $T$. Consider cases based on degree of $l$'s parent node.
 \begin{itemize}
-\item \textbf{Case I:} If $l$'s parent had more than one child, the leaf count decreases by 1.
-This implies the parent has degree $\geq 3$, so $|L'| = |L| - 1$ and $k' = k - 1$.
-\item \textbf{Case II:} If $l$'s parent had only one child, the leaf count doesn't change.
-This implies the parent has degree exactly 2, so $|L'| = |L|$ and $k' = k$.
+\item \textbf{Case I:} If $l$'s parent had degree exactly 3, then the leaf count decreases by 1, so $|L'| = |L| - 1$ and $k' = k - 1$.
+\item \textbf{Case II:} If $l$'s parent had degree $> 3$ then $|L'| = |L| - 1$ and $k' = k$.
+\item \textbf{Case III:} If $l$'s parent had degree exactly 2, Meaning after we remove $l$ it becomes a leaf, so $|L'| = |L|$ and $k' = k$.
 
 \end{itemize}
-Now Induction hypothesis on $T'$ we get $|L'| \geq k' + 2$ and now adding vertex $l$ back and substituting
-value $|L'|$ and $k'$ From case I we get $|L| \geq k + 2$ ans case II also results in same equation.
+Now, by the induction hypothesis on $T'$ we get $|L'| \geq k' + 2$, and now, adding vertex $l$ back and substituting
+values $|L'|$ and $k'$ from case I, we get $|L| \geq k + 2$, and cases II and III also result in the same equation.
 Thus, by The Induction principle, $P(n)$ holds for all $n \geq 2$.
 
 \end{proof}
@@ -69,13 +68,13 @@ l &\geq k + 2\\
 \section*{Problem 2. Froli-King}
 \textbf{(a)}
 By modeling the chessboard as a graph where nodes represent squares of the chessboard, and there exists an edge between two
-node if they are adjacent.
+nodes if they are adjacent.
 Now a move for the king is legal if two squares are adjacent to each other, and the total number of legal king moves is 420
 and In our graph model, every legal move counts each edge twice because moves $a \rightarrow b$ and $b \rightarrow a$ are
 Considered distinct moves, so the total number of edges in our graph $|E| = 420/2 = 210$
 
 Frolicsome corresponds to an Euler tour because the graph model (a) says we must start and end at the same vertex, and (b) and (c)
-implies we must visit every edge exactly once. Also, since our graph has exactly 210 edges and a move corresponds to
+imply we must visit every edge exactly once. Also, since our graph has exactly 210 edges and a move corresponds to
 an edge, Frolicsome of 210 moves is just an Euler tour.
 
 And we know an Euler tour is only possible iff every vertex is connected and has even degree. But the corner nodes have
@@ -87,7 +86,7 @@ degree of 3, which is odd.
 To make our graph Eulerian, we must make every vertex of even degree, and from part(a) there are a total of 28 corner
 vertices with odd degree, and since they are connected, we can remove one edge between two odd-degree vertices
 to make them even degree, so the total number of edges we must remove is $28 / 2 = 14$ and
-if we remove corner edges alternatively, it will result in a graph with a total of
+if we remove the edges alternatively, it will result in a graph with a total of
 196 edges; also, each vertex is connected and has even degree.
 
 \textbf{Corollary:} There exists a Frolicsome sequence of 196 King moves on this $8\times8$ board
@@ -98,8 +97,10 @@ if we remove corner edges alternatively, it will result in a graph with a total 
 \noindent\textbf{(a)} The largest chain is (1, 2, 3, 6, 9, 10, 12).
 
 \vspace{\baselineskip}
-\noindent\textbf{(b)} The largest anti-chain is (1,4,5,7,8,11) because the remaining nodes form a chain as shown in part (a), and every element of the anti-chain is incomparable to the remaining elements.
-Therefore, it's the largest possible anti-chain.
+\noindent\textbf{(b)} The largest antichain is (1,4,5,7,8,11), which is a size of 6.
+We can partition the vertices of the DAG into exactly 6 distinct chains.
+{(1,23,6,9,10,12),(7),(8),(4),(5),(11)}, and by Dilworth's Theorem, the size of the largest antichain exactly equals the minimum number of chains needed to partition all the vertices in the graph.
+Since the entire graph can be partitioned into 6 chains, it is impossible to have an antichain of 7 elements
 
 \vspace{\baselineskip}
 \noindent\textbf{(c)} 12 second
@@ -109,10 +110,6 @@ Therefore, it's the largest possible anti-chain.
 
 \vspace{\baselineskip}
 \noindent\textbf{(e)} 3 processors.
-
-\textbf{(e) Minimum Processors and Schedule}
-
-The smallest number of processors is $p = 3$.
 
 \vspace{1em}
 \textbf{Optimal Schedule:}
@@ -237,7 +234,7 @@ definition of an edge in the implication graph, $x \implies y$.
 
 \textbf{Inductive step:} Suppose for $P(k-1)$ is true for all $k > 1$. Now a path of length k from $x$ to $y$ can be shown as
 \[x = v_0 \rightarrow v_1 \rightarrow v_2 \dots \rightarrow v_{k-1} \rightarrow v_k = y \]
-Since the path from $x$ to $v_{k-1}$ is of length $k-1$, by the induction hypothesis we know $x \implies v_{k-1}$, and by the definition of an edge in the given graph, 
+Since the path from $x$ to $v_{k-1}$ is of length $k-1$, by the induction hypothesis we know $x \implies v_{k-1}$, and by the definition of an edge in the given graph,
 $v_{k-1} \implies y$. Therefore, by the transitive property of implication $x \implies y$.
 
 So by induction hypothesis $P(k)$ is true for all $k > 0$.
