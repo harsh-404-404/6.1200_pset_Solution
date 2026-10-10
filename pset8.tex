@@ -1,0 +1,154 @@
+\documentclass{article}
+
+\usepackage{amssymb,amsmath,amsthm,mathtools,cancel}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+\noindent
+\begin{minipage}[t]{0.68\textwidth}
+{\large 6.1200 \textit{Mathematics for Computer Science}}\\[4pt]
+{\large Problem Set 2}\\[4pt]
+{\large Solutions by Harsh Bhalala}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.27\textwidth}
+\raggedleft
+{\large 8, October 2026}
+\end{minipage}
+
+\vspace{6pt}
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section*{Problem 1. Strong Connectivity}
+
+\textbf{(a)} In a directed graph $G$ equivalence relation $R$ on the vertices of $G$ as follows: $u \mathrel{R} v$
+is true IFF there exists a directed walk from $u$ to $v$ and a directed walk from $v$ to $u$.
+(Note: A walk from $ u$ to $ v$ is expressed as $u \rightarrow v$)
+Now to show that the given relation is an equivalence relation:
+\begin{itemize}
+\item \textbf{Reflexive:} By the definition of a walk, there always exists a walk of length 0 from $ a$ to $ a$.
+\item \ textbf {Symmetric :} If $(u \rightarrow v) \land (v \rightarrow u)$ is true, then by the symmetric nature of $\land$ swpping the terms does not
+change the truth value; therefore, $u \mathrel{R} v$ implies $v \mathrel{R} u$.
+\item \textbf{Transitive:} If $a \mathrel{R} b$ and $b \mathrel{R} c$ then we know there exists walks $(a \rightarrow b)$, $(b \rightarrow a)$,
+$(b \rightarrow c)$, $(c \rightarrow b)$ and by concatenating those walk we get $(a \rightarrow b \rightarrow c)$ which imples $(a \rightarrow c)$
+and similarly, by doing the same for the other two walks we get ($c \rightarrow a$), and together they imply $a \mathrel{R} c$.
+\end{itemize}
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)} By definition, Relation $R$ directly implies that two vertices are strongly connected, so any two vertices $ u$ and $ v$
+that are in same connected components must satisfy equivalence relation $(u \mathrel{R} v)$.
+
+\section*{Problem 2. Bijections via Inverses}
+
+\textbf{(a)}
+\begin{proof}[Proof by contradiction]
+Assume $f$ is not injective. Hence, $\exists a,b \in A$ such that $a \neq b$ and $f(a) = f(b)$.
+Now $g(f(a)) = a$ and $g(f(b)) = b$ by definition but since $f(a) = f(b)$, $g(f(a)) = g(f(b)) = a = b$ which is a contradiction.
+\end{proof}
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+\begin{proof}[proof by contradiction]
+Assume $f$ is not surjective. Hence, $\exists b \in B$ such that $\forall a \in A, f(a) \neq b$.But $f(g(b)) = b$ is true for all $b\in B$
+which is a contradiction.
+\end{proof}
+
+\noindent\textbf{(c)} From parts (a) and (b), we know $f$ is a function, total, injective, and surjective. Hence $f$ is a bijection.
+
+
+\section*{Problem 3. Increasing Correspondence}
+
+\textbf{(a)}
+Let $(a,b,c) \in A$. Now by the definition $f(a,b,c) = (c-b,b-a,a)$ and because $a \leq b \leq c$ we observe that $c-b \geq 0$,
+$b-a \geq 0$ and $a \geq 0$, which implies that for every valid input pair there is at least one output.
+Therefore, the given function is a total function.
+
+Now we show that every output of $f$ lies in set B. As we know $\forall(a,b,c) \in A$, $f(a,b,c) = ((c-b,b-a,a))$, and given pair is
+part of set B IFF
+\[
+\begin{aligned}
+(c-b) + 2(b-a) + 3a = 1000\\
+a + b + c = 1000\\
+\end{aligned}
+\]
+and $(a + b + c = 1000) $ is true since they are in set A, which satisfies all necessary conditions and
+by this we can conclude that every element $(a, b, c) \in A$,the resulting triple $f((a, b, c))$ lies in B.
+
+\pagebreak
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+Total function $g:B \rightarrow A$, $g(x,y,z) \coloneq (z, y+z, x+y+z)$
+
+Now, to show that $g$ is a total function, let $(x,y,z) \in B$. Now by the definition $g(x,y,z) = (z,z+y,x+y+z)$ and because pair $(x,y,z)$
+is defined over natural number sums $(y+z)$ and $(x+y+z)$ are deterministic guarantees, which implies that for every valid input pair
+there is at least one output. Therefore, the given function is a total function.
+
+Now we show that every output of $g$ lies in set A. As we know $\forall(x,y,z) \in B$, $g(x,y,z) = ((z,z+y,x+y+z))$, and $g(x,y,z)$ pair is
+part of set B IFF
+\[
+\begin{aligned}
+z + z+y + x+y+z = 1000\\
+x + 2y + 3z = 1000\\
+\end{aligned}
+\]
+and $(x + 2y + 3z = 1000)$ is true since they are in set B, which satisfies all necessary conditions, and
+by this we can conclude that every element $(x, y, z) \in A$,the resulting triple $f((a, b, c))$ lies in B.
+
+Now to show that $g(f((a, b, c))) = (a, b, c)$ for every $(a, b, c) \in A$ by placing the output of $f$ we get $g((c-b,b-a,a))$ and also
+appyting the value of $g$ we get $g((c-b,b-a,a)) = (a,b,c)$.
+
+Similerly following the same procedure for $f(g(x,y,z))$ we get $f(g(x,y,z)) = f(z,z+y,x+y+z) = x,y,z$
+and these conditions are enough prove that $g$ is an inverse of $f$.
+
+\vspace{\baselineskip}
+\noindent\textbf{(c)}Since we proved that $g$ is a two-sided inverse of $f$, and that is necessary and sufficient to prove that $f$
+is bijection
+
+
+\section*{Problem 4. Counting Graphs}
+\textbf{(a)} \[2^{\frac{n(n-1)}{2}}\]
+
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)} \[n \times 4 \times 3 \times 3 = 36n\]
+
+
+
+\section*{Problem 5. Counting}
+\textbf{(a)} There are toal 21! ways to arrange 21 consonants
+Now, since every vowel appears to the left of a consonant,t we must choose 5 total consonants,nt so make a gap in front and place a vowel
+. There are $\binom{21}{5}$ ways to make such a gap, and now there are 5! ways to put a vowel into those gaps.
+
+Hence total way = \[21! \times \binom{21}{5} \times 5!\]
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+We first need to make a total of 5 [VCC] boxes and the remaining 11 consonants in [C] boxes:
+\[ \frac{\left( \binom{21}{2} \times \binom{19}{2} \times \binom{17}{2} \times \binom{15}{2} \times \binom{13}{2} \times 2^5 \right)}{5!} \times 5! \times 16!\]
+We needed to divide by 5! because the count is for distinct sections of groups, meaning (bc, df,...) is the same as (df, bc,...)
+and $2^5$ because pairs bc and cb are distinct. and there are 5! ways to place vowels in each box.
+and there are a total of 11 boxes of [C], so the number of ways to arrange 16 distinct boxes is 16!
+
+And simplifying the given equation gives:
+\[\frac{21! \times 16!}{11!}\]
+
+
+\vspace{\baselineskip}
+\noindent\textbf{(c)} (Note: Another concise way to expressthe  equation in (b) is used here, which is viathe  multinomial coefficient)
+Need to choose $ n$ partitions each of size 2, from 2n choises that can be done in:
+\[\binom{2n}{2,2,2,\dots 2} \times \frac{1}{n!} = \frac{(2n)!}{2^n n!}\] We must here, just like in part (b), the binomial coefficient gives an ordered pair, and since there are a total of $ n$ terms, there are $ n! $ copies of
+same arrangement.
+
+\vspace{\baselineskip}
+\noindent\textbf{(d)}We can simply apply the Stars and Bars combinatorics theorem, where stars represent the number of times a digit is in a type
+and there are 8 total digits; also, bars categorize how many times each digit appears, so to create 10 partitions we need 9 bars
+\[ \binom{\text{total position to place bars}}{\text{bars}} = \binom{\text{stars+bars}}{\text{bars}} = \binom{8 + 9}{9} = 24,310\]
+
+\end{document}
