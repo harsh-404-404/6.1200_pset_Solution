@@ -74,11 +74,13 @@ $[A_{29}] = \{(6,6,6,6,6),(5,6,6,6,6),(6,5,6,6,6),(6,6,5,6,6),(6,6,6,5,6),(6,6,6
 let outcome of our sample space be tuple $\omega = (d_1,d_2,d_3,d_4,d_5)$ and left function $f:[A_{18}] \rightarrow [A_{18}^c]$ be defined as
 \[f(\omega) = (7 - d_1,7 - d_2, 7 - d_3, 7 - d_4, 7 - d_5) \]
 
-We know that for any $\omega \in A_{18}$, $S = \sum d_i$ and $18 \leq S \leq 35$.
+We know that for any $\omega \in A_{18}$, $S = \sum d_i$ and $18 \leq S \leq 30$.
 and now for $f(\omega), S' = \sum (7 - d_i) = 35 - \sum d_i = 35 - S$ which means
-\[35 - 18 \geq 35 - S \geq 35 -35\]
-\[17 \geq S' \geq 0\]
-Threfore resulting tupple $f(\omega) \in [A_{18}^c]$.
+\[35 - 18 \geq 35 - S \geq 35 - 30\]
+\[17 \geq S' \geq 5\]
+Therefore resulting tuple $f(\omega) \in [A_{18}^c]$. Conversely, let $\omega \in A_{18}^c$, 
+meaning its sum $5 \leq S \leq 17$. The sum of the mapped tuple $f(\omega)$ is $S' = 35 - S$. 
+Since $ S \leq 17$, it follows $35 - S \geq 35 - 17$, $S' \geq 18$. Therefore, $f(\omega) \in [A_{18}]$.
 Now showing $f$ is a bijection by taking its own inverse
 \[
 \begin{aligned}
@@ -87,7 +89,7 @@ f(f(\omega)) &= 7 - (7 - d_1),7 - (7 - d_2),\cdot,(7 - (7 - d_5))\\
 &= \omega\\
 \end{aligned}
 \]
-hence $f$ a bijaction between $[A_{18}]$ and it's compliment.
+hence $f$ a bijaction between $[A_{18}]$ and it's complement.
 
 Now $[A_{18}]$ and $[A_{18}^c]$ together cover the entire sample space since they are complements of each other; we have
 \[Pr[A_{18}] + Pr[A_{18}^c] = 1\]
@@ -126,17 +128,17 @@ Therefore,
 \vspace{\baselineskip}
 \noindent\textbf{(g)}
 \begin{itemize}
-\item $E_1$: die 1 and 2 add up to 6
-\item $E_2$: die 2 and 3 add up to 6
-\item $E_3$: die 1 and 3 add up to 6
+    \item $E_1$: die 1 and 2 add up to 6
+    \item $E_2$: die 2 and 3 add up to 6
+    \item $E_3$: die 1 and 3 add up to 6
 \end{itemize}
 Now, by the inclusion-exclusion rule,
 
 $[E_1 \cup E_2 \cup E_3] = |E_1| + |E_2| + |E_3| - |E_1 \cap E_2| - |E_2 \cap E_3| - |E_1 \cap E_3| + |E_1 \cap E_2 \cap E_3|$
 
-There are a total of 5 possible pairs that sum up to 6, and the third number can be any of 6 on a die, so the total number of pairs $= 5 * 6 = 30 = |E_1| = |E_2| = |E_3|$.
+There are a total of 5 possible pairs that sum up to 6, and the third number can be any of 6 on a die, so the total number of outcomes $= 5 * 6 = 30 = |E_1| = |E_2| = |E_3|$.
 Now for the set $\{E_1 \cap E_2\}$, here it only makes two pairs in one roll if die 1 and die 3 lead to the same result, and that result makes a pair with
-outcome of die 2, and since there are a total of 5 such pairs to choose from for die 1 and die 2, $|E_1 \cap E_2| = 5$, and similarly $|E_2 \cap E_3| = |E_1 \cap E_3| = 5$
+outcome of die 2, and since there are a total of 5 such outcomes to choose from for die 1 and die 2, $|E_1 \cap E_2| = 5$, and similarly $|E_2 \cap E_3| = |E_1 \cap E_3| = 5$
 and $|E_1 \cap E_2 \cap E_3| = 1$ Because there is only one possible outcome $(3,3,3)$ where all three die pair up to 6.
 
 \[Pr[E_1 \cup E_2 \cup E_3] = \frac{30 + 30 + 30 - 5 - 5 - 5 + 1}{6^3} = \frac{76}{216}\]
@@ -145,9 +147,11 @@ and $|E_1 \cap E_2 \cap E_3| = 1$ Because there is only one possible outcome $(3
 \textbf{(a)}
 Problem description in terms of $E$, $T$ and $L$ would be:
 \begin{itemize}
-\item $P(T|E) = 1 - 0.2 = 0.8$
-\item $P(L|E) = 1 - 0.25 = 0.75$
-\item $P(E) = 0.1$
+    \item $P(T|E) = 1 - 0.2 = 0.8$
+    \item $P(L|E) = 1 - 0.25 = 0.75$
+    \item $P(E) = 0.1$
+    \item $P(T|E^c) = 0.2$ 
+    \item $P(L|E^c) = 0.25$ 
 \end{itemize}
 
 \vspace{\baselineskip}
