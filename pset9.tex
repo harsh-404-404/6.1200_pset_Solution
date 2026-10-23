@@ -1,0 +1,173 @@
+\documentclass{article}
+
+\usepackage{amssymb,amsmath,amsthm,mathtools,cancel}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+\noindent
+\begin{minipage}[t]{0.68\textwidth}
+{\large 6.1200 \textit{Mathematics for Computer Science}}\\[4pt]
+{\large Problem Set 9}\\[4pt]
+{\large Solutions by Harsh Bhalala}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.27\textwidth}
+\raggedleft
+{\large 22 October 2026}
+\end{minipage}
+
+\vspace{6pt}
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section*{Problem 1. Double Counting}
+
+Let $A,B,C$ be finite disjoint sets, with cardinalities $|A|=a$, $|B|=b$, and $|C|=c$. Let $S = \{ x \cup y \cup z\mid x \subseteq A, y \subseteq B, z \subseteq C, |x|+|y|+|z|=n \}$.
+Now we can count the number of elements in $S$ in two different ways.
+
+First we can choose all possible combinations of $x,y,z$ such that $|x|+|y|+|z|=n,$ which gives us the following sum:
+\[
+|S| = \sum_{i+j+k=n} \binom{a}{i}\binom{b}{j}\binom{c}{k}
+\]
+Also we can choose $n$ elements from the union of $A,B,C$, which gives us the following sum:
+\[
+|S| = \binom{a+b+c}{n}
+\]
+Thus we have the following identity:
+\[
+\sum_{i+j+k=n} \binom{a}{i}\binom{b}{j}\binom{c}{k} = \binom{a+b+c}{n}
+\]
+
+\section*{Problem 2. Pigeonhole Principle}
+We can express any number $x = q \cdot 2^k$ for some integers $q$ and $k$ with $q$ odd.
+
+Now in set \{1, 2, 3, \dots , 2n\} we have exactly $n$ unique odd and even numbers.
+Now, since for every even number, its odd component satisfies $q < x$ and our series contains every odd number up to $ x$, we don't need
+any new odd numbers to express even numbers.
+Thus, we can express every number from $1$ to $2n$ using exactly $n$ unique odd numbers.
+
+Now, for the pigeonhole principle, each $n+1$ elements of set $S$ pigeon, and each unique odd number factor $q$ needed to express that number is a pigeonhole, and each pigeon is assigned to a pigeonhole if they have
+same unique odd factor.
+Now, as shown above, we need exactly $n$ unique odd numbers to express every number from $1$ to $2n$.
+
+Since $|S| = n + 1$, by the pigeonhole principle, there exist $a,b$ such that they share the same unique odd factor; therefore $a/b$ is a power of $2$.
+
+\section*{Problem 3. Dice Dice Dice Dice Dice}
+\textbf{(a)}
+
+The set of outcomes of rolling 5 dice is $S = \{1,2,3,4,5,6\}^5$ and the total number of outcomes is $|S| = 6^5$. And since the dice are fair
+it has a uniform probability distribution, so the probability of each outcome is $\frac{1}{6^5}$.
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+$[A_{29}] = \{(6,6,6,6,6),(5,6,6,6,6),(6,5,6,6,6),(6,6,5,6,6),(6,6,6,5,6),(6,6,6,6,5)\}$
+\[Pr[A_{29}] = \frac{6}{6^5}\]
+
+
+\vspace{\baselineskip}
+\noindent\textbf{(c)}
+let outcome of our sample space be tuple $\omega = (d_1,d_2,d_3,d_4,d_5)$ and left function $f:[A_{18}] \rightarrow [A_{18}^c]$ be defined as
+\[f(\omega) = (7 - d_1,7 - d_2, 7 - d_3, 7 - d_4, 7 - d_5) \]
+
+We know that for any $\omega \in A_{18}$, $S = \sum d_i$ and $18 \leq S \leq 35$.
+and now for $f(\omega), S' = \sum (7 - d_i) = 35 - \sum d_i = 35 - S$ which means
+\[35 - 18 \geq 35 - S \geq 35 -35\]
+\[17 \geq S' \geq 0\]
+Threfore resulting tupple $f(\omega) \in [A_{18}^c]$.
+Now showing $f$ is a bijection by taking its own inverse
+\[
+\begin{aligned}
+f(f(\omega)) &= 7 - (7 - d_1),7 - (7 - d_2),\cdot,(7 - (7 - d_5))\\
+&= (d_1,d_2,d_3,d_4,d_5)\\
+&= \omega\\
+\end{aligned}
+\]
+hence $f$ a bijaction between $[A_{18}]$ and it's compliment.
+
+Now $[A_{18}]$ and $[A_{18}^c]$ together cover the entire sample space since they are complements of each other; we have
+\[Pr[A_{18}] + Pr[A_{18}^c] = 1\]
+and also there is a bijection $Pr[A_{18}] = Pr[A_{18}^c]$ we have
+\[2 \cdot Pr[A_{18}] = 1\]
+\[Pr[A_{18}] = \frac{1}{2}\]
+
+\vspace{\baselineskip}
+\noindent\textbf{(d)}
+\[Pr[B_k] = \binom{5}{k} \left(\frac{1}{6}\right)^k \left(\frac{5}{6}\right)^{5-k} \]
+\[Pr[C_k] = \sum_{i=k}^{5} \binom{5}{i} \left(\frac{1}{6}\right)^i \left(\frac{5}{6}\right)^{5-i} \]
+
+\vspace{\baselineskip}
+\noindent\textbf{(e)}
+\[Pr[C_3 | C_2] = \frac{Pr[C_3 \cap C_2]}{Pr[C_2]}\]
+Since $C_3 \subseteq C_2$, $Pr[C_3 \cap C_2] = Pr[C_3]$ and using given probability from Part (d),
+\[Pr[C_3 | C_2] = \frac{276}{1526}\]
+
+\vspace{\baselineskip}
+\noindent\textbf{(f)}
+\[Pr[D_3 | D_2] = \frac{Pr[D_3 \cap D_2]}{Pr[D_2]}\]
+Since $D_3 \subseteq D_2$, $Pr[D_3 \cap D_2] = Pr[D_3]$, so:
+\[Pr[D_3 | D_2] = \frac{Pr[D_3]}{Pr[D_2]}\]
+
+Now, $Pr[D_2] = 1 - Pr[D_2^c] = 1 - \frac{6!}{6^5} = \frac{7056}{7776}$.
+
+For $D_3$, since at most one face can appear $3$ or more times in $5$ rolls, the events for each of the $6$ faces to appear at least 3 times are mutually exclusive:
+\[Pr[D_3] = 6 \cdot Pr[C_3] = 6 \cdot \frac{276}{7776} = \frac{1656}{7776}\]
+Or via complement:
+$Pr[D_3] = 1 - Pr[D_3^c] = 1 - \frac{6! + 6\binom{5}{2}(5 \cdot 4 \cdot 3) + \binom{6}{2}\binom{5}{2}\binom{3}{2}(4)}{6^5} = 1 - \frac{6120}{7776} = \frac{1656}{7776}$
+
+Therefore,
+\[Pr[D_3 | D_2] = \frac{1656 / 7776}{7056 / 7776} = \frac{1656}{7056} = \frac{23}{98}\]
+
+
+\vspace{\baselineskip}
+\noindent\textbf{(g)}
+\begin{itemize}
+\item $E_1$: die 1 and 2 add up to 6
+\item $E_2$: die 2 and 3 add up to 6
+\item $E_3$: die 1 and 3 add up to 6
+\end{itemize}
+Now, by the inclusion-exclusion rule,
+
+$[E_1 \cup E_2 \cup E_3] = |E_1| + |E_2| + |E_3| - |E_1 \cap E_2| - |E_2 \cap E_3| - |E_1 \cap E_3| + |E_1 \cap E_2 \cap E_3|$
+
+There are a total of 5 possible pairs that sum up to 6, and the third number can be any of 6 on a die, so the total number of pairs $= 5 * 6 = 30 = |E_1| = |E_2| = |E_3|$.
+Now for the set $\{E_1 \cap E_2\}$, here it only makes two pairs in one roll if die 1 and die 3 lead to the same result, and that result makes a pair with
+outcome of die 2, and since there are a total of 5 such pairs to choose from for die 1 and die 2, $|E_1 \cap E_2| = 5$, and similarly $|E_2 \cap E_3| = |E_1 \cap E_3| = 5$
+and $|E_1 \cap E_2 \cap E_3| = 1$ Because there is only one possible outcome $(3,3,3)$ where all three die pair up to 6.
+
+\[Pr[E_1 \cup E_2 \cup E_3] = \frac{30 + 30 + 30 - 5 - 5 - 5 + 1}{6^3} = \frac{76}{216}\]
+
+\section*{Problem 4. Unreliable Helpers}
+\textbf{(a)}
+Problem description in terms of $E$, $T$ and $L$ would be:
+\begin{itemize}
+\item $P(T|E) = 1 - 0.2 = 0.8$
+\item $P(L|E) = 1 - 0.25 = 0.75$
+\item $P(E) = 0.1$
+\end{itemize}
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+
+\[Pr(E|T^c \cap L) = \frac{Pr[E \cap T^c \cap L]}{Pr[T^c \cap L]}\]
+\[
+\begin{aligned}
+&= \frac{0.1 * 0.2 * 0.75}{0.1 * 0.2 * 0.75 + 0.9 * 0.8 * 0.25}\\
+& = 0.0769
+\end{aligned}
+\]
+
+\vspace{\baselineskip}
+\noindent\textbf{(c)}
+Intuition: They should not be equal because when LecBot say it has error then likeyhood of TeaBot respoding also saying it has error increases.
+Calculation:
+
+\[Pr[T] = 0.1 * 0.8 + 0.9 * 0.2 = 0.26\]
+\[Pr[L] = 0.1 * 0.75 + 0.9 * 0.25 = 0.3\]
+\[Pr[T \cap L] = 0.1 * 0.8 * 0.75 + 0.9 * 0.2 * 0.25 = 0.105 \]
+\[Pr[T|L] = \frac{Pr[T \cap L]}{Pr[L]} = \frac{0.105}{0.3} = 0.35 \neq Pr[T]\]
+\end{document}
