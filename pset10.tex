@@ -36,7 +36,8 @@ Thus, the probability that all $4$ pixels have the same color is:
 \noindent\textbf{(b)} First let us calculate the $Pr[A \cap B]$ since $a$ and $b$ share 1 square there are total $4^7$ ways to color the
 $7$ pixels. Also, there are $4$ ways total way to make all 7 pixles the same color. Thus, we have:
 \[Pr[A \cap B] = \frac{4}{4^7} = \frac{1}{4^6} \]
-Also, again by symmetry, $Pr[A \cap B] = Pr[A \cap C] = Pr[A \cap D] = Pr[B \cap C] = Pr[B \cap D] = Pr[C \cap D]$.
+By symmetry, $Pr[A \cap B] = Pr[A \cap C] = \frac{1}{4^6}$. Since a and c share no squares, there are total $4^8$ way to color theire surrounding
+squres with $4 \cdot 4 = 16$ ways they can be monochromatic, giving $\Pr[A \cap C] = \frac{16}{4^8} = \frac{1}{4^6}$.
 Now, we can calculate $Pr[A \cap B \cap C]$ since $a$, $b$, and $c$ share 2 squares; there are a total of $ 4^ {10} $ ways to color the $10$ pixels. Also, there are $4$ total ways to make all 10 pixels the same color. Thus, we have:
 \[Pr[A \cap B \cap C] = \frac{4}{4^{10}} = \frac{1}{4^9}\]
 
@@ -45,7 +46,7 @@ Now Proof that A,B and C are 3-wise independent. We have:
 Similarly, we optain $Pr[A \cap C] = Pr[A] \cdot Pr[C]$ and $Pr[B \cap C] = Pr[B] \cdot Pr[C]$.
 Also, we have:
 \[Pr[A \cap B \cap C] = \frac{1}{4^9} = \frac{1}{4^3} \cdot \frac{1}{4^3} \cdot \frac{1}{4^3} = Pr[A] \cdot Pr[B] \cdot Pr[C] \]
-Thus, we have shown that $A$, $B$, and $C$ are 3-wise independent.
+Thus, we have shown that $A$, $B$, and $C$ are mutually independent.
 
 \vspace{\baselineskip}
 \noindent\textbf{(c)} Now we can calculate $Pr[A \cap B \cap C \cap D]$ since $a$, $b$, $c$, and $d$ share 4 squares, there are total $4^{12}$ ways to color the $12$ pixels.
@@ -86,14 +87,14 @@ The answer is 0 because the median cannot be 10 while the maximum is 5.
 
 \vspace{\baselineskip}
 \noindent\textbf{(d)}
-No, they are not independent because $Pr[D \cap X] = 0$, meaning they are mutually exclusive.
-
+No, they are not independent because from part (c) we showed that $\Pr[D = 10 \text{ AND } X = 5] = 0$, 
+whereas $\Pr[D = 10] \cdot \Pr[X = 5] > 0$, so $\Pr[D = 10 \text{ AND } X = 5] \neq \Pr[D = 10] \cdot \Pr[X = 5]$.
 \vspace{\baselineskip}
 \noindent\textbf{(e)}
 Value of PDF will be $> 0$ for $k \in \{1,\dots 98\}$
 
-because maximum difference between $X$ and $D$ is 100 - 2 = 98. and minumum difference between $X$ and $D$ is 100 - 99= 1.
-
+$\text{PMF}_{X-D}(k) > 0$ for all integers $k \in \{1, 2, \dots, 98\}$. 
+Since $D$ and $X$ are integers with $2 \le D < X \le 100$, the difference must be an integer satisfying $1 \le X - D \le 100 - 2 = 98$.
 
 \section*{Problem 3. Probabilistic Method}
 
@@ -102,7 +103,7 @@ because maximum difference between $X$ and $D$ is 100 - 2 = 98. and minumum diff
 \vspace{\baselineskip}
 \noindent\textbf{(b)}
 \[
-U(\phi) = \sum_{i=1}^{n} U_i
+U = \sum_{i=1}^{m} U_i
 \]
 Where
 \[
@@ -118,7 +119,7 @@ $Pr[U_i = 1] = P(C_i=\text{False})=\frac{1}{2^k} = \frac{1}{2^k}$
 Now, by linearity of expectations
 \[Ex[U] = \sum_{1}^{m}Ex[U_i]\]
 
-Also since $U_i$ is indicator variable $Ex[U_i] = Pr[U_i]$.
+Also since $U_i$ is indicator variable $Ex[U_i] = Pr[U_i = 1]$.
 \[Ex[U] = \sum_{1}^{m}Pr[U_i = 1] = \frac{m}{2^k}\].
 
 \pagebreak
@@ -165,10 +166,10 @@ Spinda follows a particular path of length $t$ is $1/2^t$, and from part (ii) we
 probability that Spinda ends at this same location s after t steps is:
 \[\frac{1}{2^t} \cdot \binom{t}{i}\]
 
-(iv) From part (i) we know $L_t = 2i - t$ So, $B_t ::= (L_t + t)/2 = 2i - t + t/2 = i$.
+(iv) From part (i) we know $L_t = 2i - t$ when Spinda takes i steps to the east. So, $B_t ::= (L_t + t)/2 = (2i - t + t)/2 = i$.
 
-$B_t$ describes the number of steps taken in the east direction out of a total of $ t$ steps.
-Since each step taken by Spinda is independent and the probability of each step is 1/2, and we are taking a total of $t$
+$B_t$ describes the number of steps taken in the east direction out of a total of $t$ steps.
+Since each step taken by Spinda is independent and the probability of each step is $1/2$, and we are taking a total of $t$
 steps, it follows a binomial distribution Bin$_t$(1/2).
 
 \end{document}
