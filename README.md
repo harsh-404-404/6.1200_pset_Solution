@@ -1,44 +1,57 @@
 # MIT 6.1200J Mathematics for Computer Science — Problem Set Solutions (Spring 2024)
 
-Complete, step-by-step solutions to the Problem Sets (PSets) for **MIT 6.1200J / 18.062J: Mathematics for Computer Science (Spring 2024)**, available on [MIT OpenCourseWare (OCW)](https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/).
+Complete, step-by-step solutions and problem sets for **MIT 6.1200J / 18.062J: Mathematics for Computer Science (Spring 2024)**, available on [MIT OpenCourseWare (OCW)](https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/).
 
-> **Note on Course Numbering:** MIT `6.1200J` was formerly known as **`6.042J`** (Mathematics for Computer Science). These solutions cover the Spring 2024 curriculum for discrete mathematics, proofs, graph theory, recurrences, and probability.
+> **Note on Course Numbering:** MIT `6.1200J` was formerly known as **`6.042J`** (Mathematics for Computer Science). These solutions cover the Spring 2024 curriculum.
 
 ---
 
 ## 📚 Course Information
 
-* **Course Title:** Mathematics for Computer Science
-* **Course Number:** 6.1200J / 18.062J *(Formerly 6.042J)*
-* **Term:** Spring 2024
-* **Level:** Undergraduate
-* **Official Course Page:** [MIT OCW 6.1200J Spring 2024](https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/)
-* **Textbook:** *Mathematics for Computer Science* by Eric Lehman, F. Thomson Leighton, and Albert R. Meyer
+- **Course Title:** Mathematics for Computer Science
+- **Course Number:** 6.1200J / 18.062J *(Formerly 6.042J)*
+- **Term:** Spring 2024
+- **Level:** Undergraduate
+- **Official Course Page:** [MIT OCW 6.1200J Spring 2024](https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/)
+- **Textbook:** *Mathematics for Computer Science* by Eric Lehman, F. Thomson Leighton, and Albert R. Meyer
 
 ---
 
 ## 🗂️ Problem Set Solutions Index
 
-| Problem Set | Core Topics Covered | Solution Link |
+Each folder below contains both the **original Problem Set questions** and the **worked solutions**:
+
+| Problem Set | Days Covered | Questions & Solutions Link |
 | :--- | :--- | :--- |
-| **PSet 1** | Propositions, Predicates, Proofs, Well Ordering Principle | [View PSet 1 Solutions](./pset1/) |
-| **PSet 2** | Induction, Strong Induction, State Machines | [View PSet 2 Solutions](./pset2/) |
-| **PSet 3** | Number Theory, GCD, Modular Arithmetic, RSA Cryptography | [View PSet 3 Solutions](./pset3/) |
-| **PSet 4** | Equivalence Relations, Partial Orders, Digraphs, DAGs | [View PSet 4 Solutions](./pset4/) |
-| **PSet 5** | Simple Graphs, Coloring, Trees, Bipartite Matching | [View PSet 5 Solutions](./pset5/) |
-| **PSet 6** | Sums, Asymptotics, Recurrences, Divide-and-Conquer | [View PSet 6 Solutions](./pset6/) |
-| **PSet 7** | Counting, Permutations, Combinations, Pigeonhole Principle | [View PSet 7 Solutions](./pset7/) |
-| **PSet 8** | Probability, Conditional Probability, Independence | [View PSet 8 Solutions](./pset8/) |
-| **PSet 9** | Random Variables, Expectation, Deviation, Markov & Chebyshev Bounds | [View PSet 9 Solutions](./pset9/) |
+| **Problem Set 01** | Lecture 1, 2 | [Problem Set 01](./Problem%20Set%2001/) |
+| **Problem Set 02** | Lecture 3, 4 | [Problem Set 02](./Problem%20Set%2002/) |
+| **Problem Set 03** | Lecture 4, 5 | [Problem Set 03](./Problem%20Set%2003/) |
+| **Problem Set 04** | Lecture 6, 7 | [Problem Set 04](./Problem%20Set%2004/) |
+| **Problem Set 05** | Lecture 8, 9, 10 | [Problem Set 05](./Problem%20Set%2005/) |
+| **Problem Set 06** | Lecture 11, 12 | [Problem Set 06](./Problem%20Set%2006/) |
+| **Problem Set 07** | Lecture 13, 14 | [Problem Set 07](./Problem%20Set%2007/) |
+| **Problem Set 08** | Lecture 14, 15 | [Problem Set 08](./Problem%20Set%2008/) |
+| **Problem Set 09** | Lecture 17, 18, 19 | [Problem Set 09](./Problem%20Set%2009/) |
+| **Problem Set 10** | Lecture 20, 21, 22 | [Problem Set 10](./Problem%20Set%2010/) |
 
 ---
 
-## 🛠️ How to Use This Repository
+## 🧠 My Experience with the Problem Sets
 
-1. **Attempt the problem first:** Download the original problem sets from the [MIT OCW 6.1200J Assignments page](https://ocw.mit.edu/courses/6-1200j-mathematics-for-computer-science-spring-2024/pages/assignments/).
-2. **Check your proofs:** Compare your mathematical reasoning and edge cases with the worked solutions here.
-3. **Contribute or Report Typos:** Found a cleaner proof or a typo? Feel free to open an **Issue** or submit a **Pull Request**!
+It was excruciating when I started this course. Each problem took hours, thousands of hints, and I was still not getting it—but I hope you stick with a problem, push through, and don't feel discouraged if you take millions of hints or look at a solution and still can't figure it out. That's part of the process; that's how the course was designed. **You can do it!** 💪
 
+As you go through each lecture and one PSet after another, you will become comfortable with the difficulty and will gain confidence. Even if the time taken per PSet does not decrease, it will start to make sense. 📈
+
+⏱️ **Time & Hints Tip:** It can take you anywhere from **3–12 hours (or more)** if you are really reluctant and don't take hints. 
+
+> 💡 **How to get hints without spoiling the answer:** You can look at my solutions or use LLMs for hints, but make sure before you ask anything, you instruct it to **act as an MIT TA**, not to give a direct solution to the problem. LLMs spill the answer really easily, so be careful—an LLM should strictly be used as a replacement for office hours!
+
+---
+
+---
+## 💡 How to Use This Repository & Disclaimer
+- **Disclaimer (Potential Errors):** These solutions are self-written for study and reference purposes, not official MIT staff solutions. While every effort has been made to keep the proofs rigorous and accurate, **you may occasionally find mistakes, typos, or suboptimal proofs**.
+- **Found an Error?** If you spot a mistake in a proof, a calculation error, or have a cleaner way to solve a problem, please open an **Issue** or submit a **Pull Request** so we can fix it!
 ---
 
 ## 🔍 Keywords & Topics Covered
