@@ -1,0 +1,174 @@
+\documentclass{article}
+
+\usepackage{amssymb,amsmath,amsthm,mathtools,cancel}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+\noindent
+\begin{minipage}[t]{0.68\textwidth}
+{\large 6.1200 \textit{Mathematics for Computer Science}}\\[4pt]
+{\large Problem Set 10}\\[4pt]
+{\large Solutions by Harsh Bhalala}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.27\textwidth}
+\raggedleft
+{\large 31 October 2026}
+\end{minipage}
+
+\vspace{6pt}
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section*{Problem 1. Random Pixels}
+
+\textbf{(a)} Since there are $4$ colors, the total number of way to color $4$ pixels is $4^4$. Also, there are $4$ ways to color all $4$ pixels with the same color.
+Thus, the probability that all $4$ pixels have the same color is:
+\[Pr[A] = \frac{4}{4^4} = \frac{1}{4^3} \]
+(Note: By symmetry, $Pr[A] = Pr[B] = Pr[C] = Pr[D]$)
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)} First let us calculate the $Pr[A \cap B]$ since $a$ and $b$ share 1 square there are total $4^7$ ways to color the
+$7$ pixels. Also, there are $4$ ways total way to make all 7 pixles the same color. Thus, we have:
+\[Pr[A \cap B] = \frac{4}{4^7} = \frac{1}{4^6} \]
+Also, again by symmetry, $Pr[A \cap B] = Pr[A \cap C] = Pr[A \cap D] = Pr[B \cap C] = Pr[B \cap D] = Pr[C \cap D]$.
+Now, we can calculate $Pr[A \cap B \cap C]$ since $a$, $b$, and $c$ share 2 squares; there are a total of $ 4^ {10} $ ways to color the $10$ pixels. Also, there are $4$ total ways to make all 10 pixels the same color. Thus, we have:
+\[Pr[A \cap B \cap C] = \frac{4}{4^{10}} = \frac{1}{4^9}\]
+
+Now Proof that A,B and C are 3-wise independent. We have:
+\[Pr[A \cap B] = \frac{1}{4^6} = \frac{1}{4^3} \cdot \frac{1}{4^3} = Pr[A] \cdot Pr[B] \]
+Similarly, we optain $Pr[A \cap C] = Pr[A] \cdot Pr[C]$ and $Pr[B \cap C] = Pr[B] \cdot Pr[C]$.
+Also, we have:
+\[Pr[A \cap B \cap C] = \frac{1}{4^9} = \frac{1}{4^3} \cdot \frac{1}{4^3} \cdot \frac{1}{4^3} = Pr[A] \cdot Pr[B] \cdot Pr[C] \]
+Thus, we have shown that $A$, $B$, and $C$ are 3-wise independent.
+
+\vspace{\baselineskip}
+\noindent\textbf{(c)} Now we can calculate $Pr[A \cap B \cap C \cap D]$ since $a$, $b$, $c$, and $d$ share 4 squares, there are total $4^{12}$ ways to color the $12$ pixels.
+Also, there are $4$ total ways to make all 12 pixels the same color. Thus, we have:
+\[Pr[A \cap B \cap C \cap D] = \frac{4}{4^{12}} = \frac{1}{4^{11}}\]
+Now we can see that:
+\[Pr[A \cap B \cap C \cap D] = \frac{1}{4^{11}} \neq \frac{1}{4^3} \cdot \frac{1}{4^3} \cdot \frac{1}{4^3} \cdot \frac{1}{4^3} = Pr[A] \cdot Pr[B] \cdot Pr[C] \cdot Pr[D] \]
+Thus, we have proven that $A$, $B$, $C$, and $D$ are not mutually independent.
+
+
+
+\section*{Problem 2. Median vs Maximum}
+
+\textbf{(a)}
+There are a total of $\binom{100}{3}$ ways to select 3 numbers from 100.
+Now let us consider the case where $k$ is the median. In this case, we need to select two numbers, one of
+which is less than $k$, and the other is greater. Thus, there are $\binom{k-1}{1} \cdot \binom{100-k}{1}$ ways to do this.
+
+\[\text{PMF}_D (k) = \frac{\binom{k-1}{1} \cdot \binom{100-k}{1}}{\binom{100}{3}} = \frac{(k-1)*(100-k)}{\binom{100}{3}}\]
+
+Similarly, we can calculate the case where $k$ is maximum. In this case, we need to select two numbers such that both of them are less than $k$.
+Thus, there are $\binom{k-1}{2}$ ways to do this.
+
+\[\text{PMF}_X (k) = \frac{\binom{k-1}{2}}{\binom{100}{3}}\]
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+There are a total of $\binom{100}{3}$ ways to select 3 numbers from 100.
+Now there are two ways to choose 3 3 mumbers such that the median is $\leq k$. Case 1: All 3 numbers are $\leq k$; there are $\binom{k}{3}$ ways to do this.
+Case 2: Two numbers are $\leq k$ and last one is $> k$, there are $\binom{k}{2} \cdot \binom{100-k}{1}$ ways to do this.
+Thus, we have:
+\[\text{CDF}_D (k) = \frac{\binom{k}{2} \cdot (100-k) + \binom{k}{3}}{\binom{100}{3}}\]
+
+
+\vspace{\baselineskip}
+\noindent\textbf{(c)}
+The answer is 0 because the median cannot be 10 while the maximum is 5.
+
+\vspace{\baselineskip}
+\noindent\textbf{(d)}
+No, they are not independent because $Pr[D \cap X] = 0$, meaning they are mutually exclusive.
+
+\vspace{\baselineskip}
+\noindent\textbf{(e)}
+Value of PDF will be $> 0$ for $k \in \{1,\dots 98\}$
+
+because maximum difference between $X$ and $D$ is 100 - 2 = 98. and minumum difference between $X$ and $D$ is 100 - 99= 1.
+
+
+\section*{Problem 3. Probabilistic Method}
+
+\textbf{(a)} $Pr[C]$ = Probability of at least 1 literal is true = 1 - none of them are true = $1 - \frac{1}{2^k} = \frac{2^k - 1}{2^k}$.
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+\[
+U(\phi) = \sum_{i=1}^{n} U_i
+\]
+Where
+\[
+U_i = \begin{cases}
+0, & \text{if } C_i = \text{True} \\
+1, & \text{if } C_i = \text{False} \\
+\end{cases}
+\]
+\vspace{\baselineskip}
+\noindent\textbf{(c)}
+$Pr[U_i = 1] = P(C_i=\text{False})=\frac{1}{2^k} = \frac{1}{2^k}$
+
+Now, by linearity of expectations
+\[Ex[U] = \sum_{1}^{m}Ex[U_i]\]
+
+Also since $U_i$ is indicator variable $Ex[U_i] = Pr[U_i]$.
+\[Ex[U] = \sum_{1}^{m}Pr[U_i = 1] = \frac{m}{2^k}\].
+
+\pagebreak
+
+\vspace{\baselineskip}
+\noindent\textbf{(d)}
+\begin{proof}[Proof by contradiction]
+Suppose $Pr[U = 0] = 0$, which means there will always be at least 1 clause that is unsatisfied; therefore $Ex[U] \geq 1$.
+But by using the result of part(c) and plugging $k$ = 5 and $m$ = 31, we get $Ex[U] < 1$, which is a contradiction.
+\end{proof}
+
+\vspace{\baselineskip}
+\noindent\textbf{(e)}
+From part (d), we established that $Pr[U = 0] > 0$. This implies that there exists some assignment of variables such that every clause is satisfied
+when $k$ = 5 and $m$ = 31.
+
+
+\section*{Problem 4. Teeter Dance}
+
+\textbf{(a)}
+\begin{center}
+\begin{tabular}{l | c c c c c c c c c}
+& \multicolumn{9}{c}{location} \\
+& -4 & -3 & -2 & -1 & 0 & 1 & 2 & 3 & 4 \\
+\hline \hline
+initially & & & & & 1 & & & & \\
+after 1 step & & & & 1/2 & 0 & 1/2 & & & \\
+after 2 steps & & & 1/4 & 0 & 2/4 & 0 & 1/4 & & \\
+after 3 steps & & 1/8 & 0 & 3/8 & 0 & 3/8 & 0 & 1/8 & \\
+after 4 steps & 1/16 & 0 & 4/16 & 0 & 6/16 & 0 & 4/16 & 0 & 1/16 \\
+\end{tabular}
+\end{center}
+
+\vspace{\baselineskip}
+\noindent\textbf{(b)}
+
+(i) $s= L_t = i - (t - i) = 2i - t$, Because if Spinda walked $i$ steps to East then he must have walked $t - i$ steps to West.
+
+(ii) There are a total of $i$ east steps and $t-i$ west steps, so the total number of ways to arrange east and west steps is $\binom{t}{i}$ because out of $t$ steps
+we just need to choose $i$ positions where Spinda goes east, and on the remaining steps he goes west.
+
+(iii) Since we are taking $t$ steps probability of and probability each step is $1/2$ with general product rule probability that
+Spinda follows a particular path of length $t$ is $1/2^t$, and from part (ii) we know there are a total of $\binom{t}{i}$ such paths; therefore
+probability that Spinda ends at this same location s after t steps is:
+\[\frac{1}{2^t} \cdot \binom{t}{i}\]
+
+(iv) From part (i) we know $L_t = 2i - t$ So, $B_t ::= (L_t + t)/2 = 2i - t + t/2 = i$.
+
+$B_t$ describes the number of steps taken in the east direction out of a total of $ t$ steps.
+Since each step taken by Spinda is independent and the probability of each step is 1/2, and we are taking a total of $t$
+steps, it follows a binomial distribution Bin$_t$(1/2).
+
+\end{document}
