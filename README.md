@@ -24,15 +24,15 @@ Each folder below contains both the **original Problem Set questions** and the *
 | Problem Set | Days Covered | Questions & Solutions Link |
 | :--- | :--- | :--- |
 | **Problem Set 01** | Lecture 1, 2 | [Problem Set 01](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2001) |
-| **Problem Set 02** | Lecture 3, 4 | [Problem Set 02](./Problem%20Set%2002/) |
-| **Problem Set 03** | Lecture 4, 5 | [Problem Set 03](./Problem%20Set%2003/) |
-| **Problem Set 04** | Lecture 6, 7 | [Problem Set 04](./Problem%20Set%2004/) |
-| **Problem Set 05** | Lecture 8, 9, 10 | [Problem Set 05](./Problem%20Set%2005/) |
-| **Problem Set 06** | Lecture 11, 12 | [Problem Set 06](./Problem%20Set%2006/) |
-| **Problem Set 07** | Lecture 13, 14 | [Problem Set 07](./Problem%20Set%2007/) |
-| **Problem Set 08** | Lecture 14, 15 | [Problem Set 08](./Problem%20Set%2008/) |
-| **Problem Set 09** | Lecture 17, 18, 19 | [Problem Set 09](./Problem%20Set%2009/) |
-| **Problem Set 10** | Lecture 20, 21, 22 | [Problem Set 10](./Problem%20Set%2010/) |
+| **Problem Set 02** | Lecture 3, 4 | [Problem Set 02](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2002/) |
+| **Problem Set 03** | Lecture 4, 5 | [Problem Set 03](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2003/) |
+| **Problem Set 04** | Lecture 6, 7 | [Problem Set 04](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2004/) |
+| **Problem Set 05** | Lecture 8, 9, 10 | [Problem Set 05](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2005/) |
+| **Problem Set 06** | Lecture 11, 12 | [Problem Set 06](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2006/) |
+| **Problem Set 07** | Lecture 13, 14 | [Problem Set 07](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2007/) |
+| **Problem Set 08** | Lecture 14, 15 | [Problem Set 08](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2008/) |
+| **Problem Set 09** | Lecture 17, 18, 19 | [Problem Set 09](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2009/) |
+| **Problem Set 10** | Lecture 20, 21, 22 | [Problem Set 10](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2010/) |
 
 ---
 
