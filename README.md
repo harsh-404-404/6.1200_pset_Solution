@@ -23,7 +23,7 @@ Each folder below contains both the **original Problem Set questions** and the *
 
 | Problem Set | Days Covered | Questions & Solutions Link |
 | :--- | :--- | :--- |
-| **Problem Set 01** | Lecture 1, 2 | [Problem Set 01](./Problem%20Set%2001/) |
+| **Problem Set 01** | Lecture 1, 2 | [Problem Set 01](https://github.com/harsh-404-404/6.1200_pset_Solution/tree/main/Problem%20Set%2001) |
 | **Problem Set 02** | Lecture 3, 4 | [Problem Set 02](./Problem%20Set%2002/) |
 | **Problem Set 03** | Lecture 4, 5 | [Problem Set 03](./Problem%20Set%2003/) |
 | **Problem Set 04** | Lecture 6, 7 | [Problem Set 04](./Problem%20Set%2004/) |
